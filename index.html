@@ -418,35 +418,69 @@ let pagina = 1, resultados = [];
 function parseCSV(text) {
   const lines = text.trim().split('\n');
   if (lines.length < 3) return [];
-  // Buscar fila de headers (contiene DESCRIPCIÓN)
+
+  // Buscar fila de headers
   let hi = -1, headers = [];
-  for (let i = 0; i < Math.min(5, lines.length); i++) {
+  for (let i = 0; i < Math.min(6, lines.length); i++) {
     const row = splitCSVRow(lines[i]);
-    if (row.some(h => h.toUpperCase().includes('DESCRIPCI'))) {
-      hi = i; headers = row.map(h => h.replace(/^"|"$/g,'').trim()); break;
+    const txt = row.join(' ').toUpperCase();
+    if (txt.includes('DESCRIPCI') || (txt.includes('PROVEEDOR') && txt.includes('PRECIO'))) {
+      hi = i;
+      headers = row.map(h => h.replace(/^"|"$/g,'').trim()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase());
+      break;
     }
   }
   if (hi < 0) return [];
 
+  // Detectar índices de forma flexible
+  function col(...keys) {
+    for (const k of keys) {
+      const idx = headers.findIndex(h => h.includes(k));
+      if (idx >= 0) return idx;
+    }
+    return -1;
+  }
+
+  const iCat    = col('CAT');
+  const iProv   = col('PROVEEDOR');
+  const iCod    = col('COD');
+  const iDesc   = col('DESCRIPCI');
+  const iCosto  = col('COSTO');
+  const iBase   = col('BASE');
+  const iSiva   = col('S/IVA', 'SIVA');
+  const iFinal  = col('FINAL');
+  const iMoneda = col('MONEDA');
+  const iInterno= col('INTERNO');
+
   const productos = [];
   for (let i = hi + 1; i < lines.length; i++) {
     const cols = splitCSVRow(lines[i]);
-    const obj = {};
-    headers.forEach((h, j) => obj[h] = (cols[j]||'').replace(/^"|"$/g,'').trim());
+    const g = idx => idx >= 0 ? (cols[idx]||'').replace(/^"|"$/g,'').trim() : '';
 
-    const cod   = obj['CÓD. LPS'] || obj['COD. LPS'] || '';
-    const desc  = obj['DESCRIPCIÓN'] || obj['DESCRIPCION'] || '';
-    const num   = obj['MONEDA'] === 'USD' ? obj['CÓD. INTERNO'] || '' : obj['CÓD. INTERNO'] || '';
-    const codInt= obj['CÓD. INTERNO'] || '';
-    const prov  = obj['PROVEEDOR'] || '';
-    const cat   = obj['CAT.'] || obj['CAT'] || '';
-    const moneda= obj['MONEDA'] || 'ARS';
+    const cod    = g(iCod);
+    const desc   = g(iDesc);
+    const prov   = g(iProv);
+    const cat    = g(iCat);
+    const codInt = g(iInterno);
+    const moneda = g(iMoneda) || 'ARS';
 
-    const final = limpiarNum(obj['PRECIO FINAL C/IVA'] || obj['PRECIO FINAL']);
-    const siva  = limpiarNum(obj['PRECIO S/IVA'] || obj['PRECIO BASE']);
+    let final = limpiarNum(g(iFinal));
+    let siva  = limpiarNum(g(iSiva));
+
+    // Fallbacks de precio
+    if (final <= 0 && siva > 0)  final = Math.round(siva * 1.21);
+    if (siva  <= 0 && final > 0) siva  = Math.round(final / 1.21);
+    if (final <= 0) {
+      const base  = limpiarNum(g(iBase));
+      const costo = limpiarNum(g(iCosto));
+      if (base  > 0) { siva = Math.round(base); final = Math.round(base * 1.21); }
+      else if (costo > 0) { siva = Math.round(costo * 1.5); final = Math.round(siva * 1.21); }
+    }
 
     if (!cod || !desc || final <= 0) continue;
-    productos.push({ cod, desc, codInt, prov, cat, moneda, siva, final });
+    productos.push({ cod, desc, codInt, prov, cat, moneda,
+      siva: Math.round(siva), final: Math.round(final) });
   }
   return productos;
 }
