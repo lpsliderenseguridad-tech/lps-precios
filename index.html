@@ -340,6 +340,12 @@ body {
     <div class="dolar-pill">
       💵 <strong id="dolar-val">—</strong>
     </div>
+    <button id="btn-refresh" onclick="recargar()" title="Actualizar precios" style="
+      background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
+      border-radius:50%;width:36px;height:36px;cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      font-size:16px;color:white;flex-shrink:0;transition:transform .3s;
+    ">🔄</button>
   </div>
   <div class="search-wrap">
     <span class="search-ico">🔍</span>
@@ -397,7 +403,9 @@ body {
 // ── CONFIGURACIÓN ─────────────────────────────────────────
 const SHEET_ID  = '10dpeg2RusKJJZOjQP4sk1b2GpvbgnMNFWVAezpvu5rA';
 const SHEET_GID = '2120854645'; // LISTA DE PRECIOS
-const CSV_URL   = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRXITeiYe4R_wUNdwtKC7reDhr7dEX36VYoV3tiHudWwb5GImdEClZPeR59VXZPmd-85KpYX7wWljVh/pub?gid=2120854645&single=true&output=csv';
+const CSV_BASE  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRXITeiYe4R_wUNdwtKC7reDhr7dEX36VYoV3tiHudWwb5GImdEClZPeR59VXZPmd-85KpYX7wWljVh/pub?gid=2120854645&single=true&output=csv';
+// Timestamp para forzar recarga y evitar caché
+function getCSVUrl() { return CSV_BASE + '&t=' + Date.now(); }
 
 const COLORES = {
   'DEBANDI':    {bg:'#E3F2FD', emoji:'🔨', cl:'#1565C0'},
@@ -512,7 +520,7 @@ function limpiarNum(v) {
 async function cargar() {
   try {
     // Intentar cargar del CSV publicado
-    const r = await fetch(CSV_URL);
+    const r = await fetch(getCSVUrl());
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const text = await r.text();
     todos = parseCSV(text);
@@ -666,6 +674,26 @@ function buscar() {
 }
 
 function verMas() { pagina++; buscar(); }
+
+// ── RECARGAR ──────────────────────────────────────────────
+async function recargar() {
+  const btn = document.getElementById('btn-refresh');
+  btn.style.transform = 'rotate(360deg)';
+  btn.style.transition = 'transform .6s';
+  document.getElementById('stats-txt').textContent = 'Actualizando precios...';
+  document.getElementById('lista').innerHTML = `
+    <div class="cargando">
+      <div class="spinner"></div>
+      <p>Actualizando lista de precios...</p>
+    </div>`;
+  await cargar();
+  setTimeout(() => {
+    btn.style.transform = '';
+    btn.style.transition = '';
+  }, 700);
+  // Volver a buscar con el término actual
+  if (document.getElementById('q').value || provAct !== 'Todos') buscar();
+}
 
 // ── INIT ──────────────────────────────────────────────────
 renderFiltros();
