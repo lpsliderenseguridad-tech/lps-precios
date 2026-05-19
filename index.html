@@ -444,7 +444,11 @@ function parseCSV(text) {
   // Detectar índices de forma flexible
   function col(...keys) {
     for (const k of keys) {
-      const idx = headers.findIndex(h => h.includes(k));
+      // Primero buscar match exacto
+      let idx = headers.findIndex(h => h === k);
+      if (idx >= 0) return idx;
+      // Luego buscar que contenga la clave
+      idx = headers.findIndex(h => h.includes(k));
       if (idx >= 0) return idx;
     }
     return -1;
@@ -452,13 +456,15 @@ function parseCSV(text) {
 
   const iCat    = col('CAT');
   const iProv   = col('PROVEEDOR');
-  const iCod    = col('COD');
+  // CÓD. LPS debe matchear antes que CÓD. INTERNO
+  const iCod    = col('COD. LPS', 'COD LPS', 'CODIGO LPS');
   const iDesc   = col('DESCRIPCI');
   const iCosto  = col('COSTO');
   const iBase   = col('BASE');
   const iSiva   = col('S/IVA', 'SIVA');
   const iFinal  = col('FINAL');
   const iMoneda = col('MONEDA');
+  // CÓD. INTERNO — buscar específicamente
   const iInterno= col('INTERNO');
 
   const productos = [];
