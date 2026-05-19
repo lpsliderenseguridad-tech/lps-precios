@@ -22,8 +22,6 @@
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:100vh;-webkit-font-smoothing:antialiased;}
-
-/* HEADER */
 .header{background:linear-gradient(135deg,var(--azul) 0%,var(--azul3) 100%);padding:18px 20px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(26,35,126,.25);}
 .header-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
 .logo{width:42px;height:42px;border-radius:50%;background:var(--amarillo);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;color:var(--azul);flex-shrink:0;box-shadow:0 2px 8px rgba(255,208,0,.4);}
@@ -34,11 +32,9 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
 .dolar-pill strong{color:var(--amarillo);font-size:13px;}
 .search-wrap{position:relative;}
 .search-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--texto3);pointer-events:none;}
-.search-input{width:100%;padding:13px 44px 13px 44px;font-size:16px;font-family:var(--sans);background:rgba(255,255,255,.95);border:none;border-radius:var(--radio);color:var(--texto);outline:none;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.search-input{width:100%;padding:13px 44px;font-size:16px;font-family:var(--sans);background:rgba(255,255,255,.95);border:none;border-radius:var(--radio);color:var(--texto);outline:none;box-shadow:0 2px 8px rgba(0,0,0,.15);}
 .search-input::placeholder{color:var(--texto3);}
 .search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--texto3);font-size:16px;padding:4px;display:none;}
-
-/* FILTROS */
 .filtros-section{background:var(--card);padding:12px 16px 10px;border-bottom:1px solid var(--borde);position:sticky;top:118px;z-index:90;}
 .filtros-scroll{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-bottom:10px;}
 .filtros-scroll::-webkit-scrollbar{display:none;}
@@ -46,31 +42,26 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
 .chip.on{background:var(--azul);color:#fff;border-color:var(--azul);box-shadow:0 2px 8px rgba(26,35,126,.3);}
 .sort-row{display:flex;gap:6px;align-items:center;}
 .sort-lbl{font-size:11px;color:var(--texto3);flex-shrink:0;}
-.sort-btn{padding:4px 12px;border-radius:20px;font-size:11px;font-family:var(--sans);border:1px solid var(--borde);background:transparent;color:var(--texto2);cursor:pointer;transition:all .12s;}
+.sort-btn{padding:4px 12px;border-radius:20px;font-size:11px;font-family:var(--sans);border:1px solid var(--borde);background:transparent;color:var(--texto2);cursor:pointer;}
 .sort-btn.on{background:var(--azul);color:#fff;border-color:var(--azul);}
-
-/* STATS */
 .stats-bar{padding:8px 16px;background:var(--bg);border-bottom:1px solid var(--borde);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--texto3);}
 .col-header{display:flex;align-items:center;padding:7px 16px;background:#F0F3FA;border-bottom:1px solid var(--borde);}
 .col-h-desc{flex:1;font-size:10px;font-weight:600;color:var(--texto3);text-transform:uppercase;letter-spacing:.6px;}
-.col-h-precios{display:flex;gap:0;flex-shrink:0;}
+.col-h-precios{display:flex;flex-shrink:0;}
 .col-h-p{font-size:10px;font-weight:600;color:var(--texto3);text-transform:uppercase;letter-spacing:.5px;text-align:right;padding:0 6px;}
 .w-siva{width:70px;} .w-ef{width:90px;} .w-tc{width:88px;}
-
-/* ITEMS */
 .lista{background:var(--card);}
-.item{display:flex;align-items:center;padding:12px 16px;gap:11px;border-bottom:1px solid var(--borde);transition:background .1s;cursor:default;}
+.item{display:flex;align-items:center;padding:12px 16px;gap:11px;border-bottom:1px solid var(--borde);cursor:default;}
 .item:active{background:#F4F6FB;}
-.item:last-child{border-bottom:none;}
 .item-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .item-info{flex:1;min-width:0;}
 .item-nom{font-size:14px;font-weight:500;color:var(--texto);line-height:1.35;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
 .item-nom mark{background:#FFF176;color:var(--texto);border-radius:2px;padding:0 1px;}
 .item-badges{display:flex;gap:4px;flex-wrap:wrap;align-items:center;}
-.badge{font-size:10px;padding:2px 6px;border-radius:20px;background:var(--bg);color:var(--texto2);border:1px solid var(--borde);white-space:nowrap;}
-.badge-lps{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;background:#E3F2FD;color:#1565C0;border:1px solid #BBDEFB;font-weight:600;}
+.badge{font-size:10px;padding:2px 6px;border-radius:20px;background:var(--bg);color:var(--texto2);border:1px solid var(--borde);}
+.badge-cod{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;background:#E3F2FD;color:#1565C0;border:1px solid #BBDEFB;font-weight:600;}
 .badge-prov{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;background:var(--bg);color:var(--texto2);border:1px solid var(--borde);}
-.item-precios{display:flex;align-items:center;flex-shrink:0;gap:0;}
+.item-precios{display:flex;align-items:center;flex-shrink:0;}
 .p-col{text-align:right;padding:0 6px;}
 .p-div{width:1px;height:28px;background:var(--borde);}
 .p-siva-val{font-family:var(--mono);font-size:11px;color:var(--texto2);}
@@ -79,36 +70,25 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
 .p-ef-lbl{font-size:9px;color:var(--texto3);margin-top:2px;}
 .p-tc-val{font-size:14px;font-weight:600;color:var(--rojo);line-height:1.1;}
 .p-tc-lbl{font-size:9px;color:var(--texto3);margin-top:2px;}
-
-/* ESTADO VACÍO */
 .estado{text-align:center;padding:52px 24px;background:var(--card);}
 .estado-ico{font-size:48px;margin-bottom:14px;opacity:.3;}
 .estado h3{font-size:17px;font-weight:500;color:var(--texto2);margin-bottom:6px;}
 .estado p{font-size:13px;color:var(--texto3);line-height:1.5;}
-
-/* VER MÁS */
 .ver-mas{text-align:center;padding:16px;background:var(--card);border-top:1px solid var(--borde);}
 .ver-mas button{padding:11px 28px;background:var(--bg);color:var(--texto2);border:1.5px solid var(--borde);border-radius:var(--radio);font-size:14px;font-family:var(--sans);cursor:pointer;font-weight:500;}
-
-/* CARGANDO */
 .cargando{text-align:center;padding:52px 24px;background:var(--card);}
 .spinner{width:36px;height:36px;border:3px solid var(--borde);border-top-color:var(--azul);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .cargando p{font-size:14px;color:var(--texto3);}
-
-/* DEBUG INFO */
-.debug-bar{background:#FFF3E0;padding:8px 16px;font-size:11px;color:#E65100;border-bottom:1px solid #FFE0B2;display:none;}
-
+/* Barra de debug - sacar cuando todo funcione */
+.debug-bar{background:#E8F5E9;padding:6px 16px;font-size:11px;color:#2E7D32;border-bottom:1px solid #C8E6C9;font-family:monospace;}
 .footer{padding:20px 16px;text-align:center;font-size:11px;color:var(--texto3);background:var(--bg);}
-
 @media(min-width:640px){
   .header{padding:18px 28px 16px;}
   .filtros-section{padding:12px 28px 10px;}
   .stats-bar,.col-header{padding:8px 28px;}
   .item{padding:14px 28px;}
   .lista-wrap{max-width:860px;margin:0 auto;}
-  .item-nom{font-size:15px;}
-  .p-ef-val{font-size:18px;}
 }
 </style>
 </head>
@@ -119,15 +99,15 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
     <div class="logo">LPS</div>
     <div class="header-txt">
       <h1>Lista de Precios LPS</h1>
-      <p>Buscá por nombre, código LPS o código proveedor</p>
+      <p>Buscá por descripción, código LPS o proveedor</p>
     </div>
     <div class="dolar-pill">💵 <strong id="dolar-val">—</strong></div>
-    <button id="btn-refresh" onclick="recargar()" title="Actualizar precios" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:white;flex-shrink:0;">🔄</button>
+    <button id="btn-refresh" onclick="recargar()" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:white;flex-shrink:0;">🔄</button>
   </div>
   <div class="search-wrap">
     <span class="search-ico">🔍</span>
     <input type="search" id="q" class="search-input"
-      placeholder="Nombre, código LPS (ej: 00123), código proveedor (ej: DD-10622)..."
+      placeholder="Extintor, DD-DD10622, DEBANDI..."
       oninput="onInput()" autocomplete="off" autocorrect="off" autocapitalize="none"/>
     <button class="search-clear" id="btn-clear" onclick="limpiar()">✕</button>
   </div>
@@ -140,12 +120,12 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
     <button class="sort-btn on" onclick="setSort('az',this)">A-Z</button>
     <button class="sort-btn" onclick="setSort('precio_asc',this)">Precio ↑</button>
     <button class="sort-btn" onclick="setSort('precio_desc',this)">Precio ↓</button>
-    <button class="sort-btn" onclick="setSort('num',this)">Código #</button>
+    <button class="sort-btn" onclick="setSort('cod',this)">Código</button>
   </div>
 </div>
 
 <div class="lista-wrap">
-  <div class="debug-bar" id="debug-bar"></div>
+  <div class="debug-bar" id="debug-bar">Cargando...</div>
   <div class="stats-bar">
     <span id="stats-txt">Cargando...</span>
     <span id="stats-extra"></span>
@@ -153,313 +133,289 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
   <div class="col-header">
     <div class="col-h-desc">Producto</div>
     <div class="col-h-precios">
-      <div class="col-h-p w-siva" style="color:var(--texto3)">S/IVA</div>
+      <div class="col-h-p w-siva">S/IVA</div>
       <div class="col-h-p w-ef">Efectivo</div>
       <div class="col-h-p w-tc" style="color:var(--rojo)">Tarjeta</div>
     </div>
   </div>
-  <div id="lista">
-    <div class="cargando"><div class="spinner"></div><p>Cargando lista de precios...</p></div>
-  </div>
+  <div id="lista"><div class="cargando"><div class="spinner"></div><p>Cargando...</p></div></div>
   <div class="footer">LPS — Lider en Seguridad · La Carlota, Córdoba · lpsliderenseguridad@gmail.com</div>
 </div>
 
 <script>
-// ── CONFIGURACIÓN ─────────────────────────────────────────
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRXITeiYe4R_wUNdwtKC7reDhr7dEX36VYoV3tiHudWwb5GImdEClZPeR59VXZPmd-85KpYX7wWljVh/pub?gid=2120854645&single=true&output=csv';
-function getCSVUrl() { return CSV_URL + '&t=' + Date.now(); }
+function getCSVUrl(){ return CSV_URL + '&t=' + Date.now(); }
 
 const COLORES = {
-  'DEBANDI':    {bg:'#E3F2FD', emoji:'🔨', cl:'#1565C0'},
-  'ECOLED':     {bg:'#E8F5E9', emoji:'💡', cl:'#2E7D32'},
-  'PINTURERIA': {bg:'#FFF3E0', emoji:'🎨', cl:'#E65100'},
-  'CARBUROX':   {bg:'#FCE4EC', emoji:'🔥', cl:'#C62828'},
-  'TOSI':       {bg:'#EDE7F6', emoji:'🛡', cl:'#4527A0'},
-  'CBA PAIS':   {bg:'#E0F7FA', emoji:'📦', cl:'#00695C'},
-  'CEG':        {bg:'#E8F5E9', emoji:'🛒', cl:'#2E7D32'},
-  'ESLINGA':    {bg:'#FFF8E1', emoji:'⛓', cl:'#F57F17'},
+  'DEBANDI':    {bg:'#E3F2FD',emoji:'🔨'},
+  'ECOLED':     {bg:'#E8F5E9',emoji:'💡'},
+  'PINTURERIA': {bg:'#FFF3E0',emoji:'🎨'},
+  'CARBUROX':   {bg:'#FCE4EC',emoji:'🔥'},
+  'TOSI':       {bg:'#EDE7F6',emoji:'🛡'},
+  'CBA PAIS':   {bg:'#E0F7FA',emoji:'📦'},
+  'CEG':        {bg:'#E8F5E9',emoji:'🛒'},
+  'ESLINGA':    {bg:'#FFF8E1',emoji:'⛓'},
 };
 
-const POR_PAG = 25;
-let todos = [], provAct = 'Todos', sortAct = 'az', pagina = 1, resultados = [];
-let proveedores = ['Todos'];
+const POR_PAG=25;
+let todos=[], provAct='Todos', sortAct='az', pagina=1, resultados=[], proveedores=['Todos'];
 
-// ── PARSEAR CSV ───────────────────────────────────────────
-function norm(s) {
-  return String(s||'').trim().toUpperCase()
-    .normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+// ── SPLIT CSV con soporte de comillas ─────────────────────
+function splitRow(line){
+  const c=[]; let cur='', inQ=false;
+  for(let i=0;i<line.length;i++){
+    const ch=line[i];
+    if(ch==='"'){inQ=!inQ;}
+    else if(ch===','&&!inQ){c.push(cur.replace(/^"|"$/g,'').trim());cur='';}
+    else cur+=ch;
+  }
+  c.push(cur.replace(/^"|"$/g,'').trim());
+  return c;
 }
 
-function parseCSV(text) {
-  const lines = text.trim().split('\n');
-  if (lines.length < 3) return [];
+// ── NORMALIZAR texto (sin tildes, mayúsculas) ─────────────
+function norm(s){ return String(s||'').trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
 
-  // Buscar fila de encabezados
+// ── PARSEAR NUMERO ────────────────────────────────────────
+function num(v){
+  if(!v) return 0;
+  const s=String(v).replace(/[^\d.,]/g,'');
+  if(!s) return 0;
+  // Si tiene punto Y coma: el que va último es el decimal
+  const dp=s.lastIndexOf('.');
+  const dc=s.lastIndexOf(',');
+  let clean;
+  if(dc>dp){ clean=s.replace(/\./g,'').replace(',','.'); }
+  else { clean=s.replace(/,/g,''); }
+  return parseFloat(clean)||0;
+}
+
+// ── PARSEAR CSV ───────────────────────────────────────────
+function parseCSV(text){
+  const lines = text.trim().split('\n');
+  const dbg = document.getElementById('debug-bar');
+
+  // PASO 1: encontrar la fila de encabezados
+  // La estructura del sheet es:
+  // Fila 0: título "LPS — LISTA DE PRECIOS COMPLETA"
+  // Fila 1: encabezados CAT | PROVEEDOR | CÓD. LPS | DESCRIPCIÓN | ...
   let hi = -1, headers = [];
-  for (let i = 0; i < Math.min(8, lines.length); i++) {
-    const row = splitCSVRow(lines[i]);
-    const txt = row.map(norm).join(' ');
-    if (txt.includes('DESCRIPCI') || txt.includes('PROVEEDOR')) {
-      hi = i;
-      headers = row.map(norm);
-      break;
+  for(let i=0; i<Math.min(10,lines.length); i++){
+    const row = splitRow(lines[i]);
+    const joined = row.map(norm).join(' ');
+    // Buscar la fila que tenga DESCRIPCI y PROVEEDOR juntos
+    if(joined.includes('DESCRIPCI') && joined.includes('PROVEEDOR')){
+      hi=i; headers=row.map(norm); break;
     }
   }
-  if (hi < 0) return [];
 
-  // ── DETECCIÓN DE COLUMNAS ─────────────────────────────
-  // Busca coincidencia exacta primero, luego parcial
-  function col(...keys) {
-    for (const k of keys) {
-      const kn = norm(k);
-      // Exacto
-      let idx = headers.findIndex(h => h === kn);
-      if (idx >= 0) return idx;
-      // Contiene
-      idx = headers.findIndex(h => h.includes(kn));
-      if (idx >= 0) return idx;
+  if(hi<0){
+    dbg.textContent='❌ No se encontró fila de encabezados';
+    dbg.style.background='#FFEBEE'; dbg.style.color='#C62828';
+    return [];
+  }
+
+  // PASO 2: mapear columnas por nombre exacto o parcial
+  function col(...keys){
+    for(const k of keys){
+      const kn=norm(k);
+      let idx=headers.findIndex(h=>h===kn);
+      if(idx>=0) return idx;
+      idx=headers.findIndex(h=>h.includes(kn));
+      if(idx>=0) return idx;
     }
     return -1;
   }
 
-  // COD. LPS — debe ser la columna con el código numérico de LPS
-  // Buscar específicamente "LPS" en el header, evitar "INTERNO"
-  let iLPS = -1;
-  for (let i = 0; i < headers.length; i++) {
-    const h = headers[i];
-    if ((h.includes('LPS') || h.includes('ESTANTE') || h.includes('NUM')) && !h.includes('INTERNO')) {
-      iLPS = i; break;
-    }
-  }
-  // Fallback: buscar columna con números de 5 dígitos en las primeras filas
-  if (iLPS < 0) {
-    for (let c = 0; c < Math.min(5, headers.length); c++) {
-      let hits = 0;
-      for (let r = hi+1; r < Math.min(hi+10, lines.length); r++) {
-        const row = splitCSVRow(lines[r]);
-        const v = (row[c]||'').replace(/^"|"$/g,'').trim();
-        if (/^\d{3,6}$/.test(v)) hits++;
-      }
-      if (hits >= 3) { iLPS = c; break; }
-    }
-  }
+  // Columnas del sheet según la captura:
+  // A=CAT, B=PROVEEDOR, C=CÓD.LPS, D=DESCRIPCIÓN,
+  // E=PRECIO COSTO, F=BULTO, G=%MARGEN, H=PRECIO BASE,
+  // I=PRECIO S/IVA, J=PRECIO FINAL C/IVA, K=MONEDA
+  const iCat    = col('CAT');
+  const iProv   = col('PROVEEDOR');
+  const iCod    = col('COD. LPS','COD LPS','CODIGO LPS','CÓD. LPS');
+  const iDesc   = col('DESCRIPCION','DESCRIPCIÓN','DESC');
+  const iSiva   = col('S/IVA','PRECIO S/IVA','SIVA');
+  const iFinal  = col('PRECIO FINAL','FINAL C/IVA','FINAL','EFECTIVO');
+  const iBase   = col('PRECIO BASE','BASE');
+  const iCosto  = col('PRECIO COSTO','COSTO');
+  const iBulto  = col('BULTO');
+  const iMoneda = col('MONEDA');
 
-  // COD. PROVEEDOR — el código del proveedor (puede tener letras)
-  let iCodProv = col('COD. PROV', 'CODIGO PROV', 'COD PROV', 'INTERNO', 'COD. INT');
+  dbg.textContent = `✓ Headers fila ${hi+1} | Cat:${iCat} Prov:${iProv} Cod:${iCod} Desc:${iDesc} S/IVA:${iSiva} Final:${iFinal}`;
+  dbg.style.background='#E8F5E9'; dbg.style.color='#2E7D32';
 
-  const iProv    = col('PROVEEDOR');
-  const iDesc    = col('DESCRIPCI', 'DESC');
-  const iSiva    = col('S/IVA', 'SIVA', 'SIN IVA');
-  const iFinal   = col('FINAL', 'EFECTIVO', 'PRECIO FINAL');
-  const iBase    = col('BASE');
-  const iCosto   = col('COSTO');
-  const iCat     = col('CAT');
-  const iMoneda  = col('MONEDA');
+  // PASO 3: parsear productos
+  const productos=[], provsSet=new Set();
 
-  // Log para debug
-  console.log('Headers:', headers);
-  console.log('iLPS:', iLPS, '| iCodProv:', iCodProv, '| iProv:', iProv, '| iDesc:', iDesc, '| iSiva:', iSiva, '| iFinal:', iFinal);
+  for(let i=hi+1; i<lines.length; i++){
+    const row=splitRow(lines[i]);
+    const g=idx=>idx>=0?(row[idx]||'').trim():'';
 
-  const dbg = document.getElementById('debug-bar');
-  if (dbg) {
-    dbg.style.display = 'block';
-    dbg.textContent = `Cols → LPS:${iLPS} | CodProv:${iCodProv} | Prov:${iProv} | Desc:${iDesc} | S/IVA:${iSiva} | Final:${iFinal}`;
-  }
+    const codLPS  = g(iCod);
+    const desc    = g(iDesc);
+    const prov    = g(iProv).toUpperCase().trim();
+    const cat     = g(iCat);
 
-  const productos = [];
-  const provsSet = new Set();
+    if(!desc) continue; // skip filas vacías
 
-  for (let i = hi + 1; i < lines.length; i++) {
-    const cols = splitCSVRow(lines[i]);
-    const g = idx => idx >= 0 ? (cols[idx]||'').replace(/^"|"$/g,'').trim() : '';
+    let siva  = num(g(iSiva));
+    let final = num(g(iFinal));
 
-    const codLPS   = g(iLPS);
-    const codProv  = g(iCodProv);
-    const desc     = g(iDesc);
-    const prov     = g(iProv).toUpperCase();
-    const cat      = g(iCat);
-
-    let final = limpiarNum(g(iFinal));
-    let siva  = limpiarNum(g(iSiva));
-
-    if (final <= 0 && siva > 0)  final = Math.round(siva * 1.21);
-    if (siva  <= 0 && final > 0) siva  = Math.round(final / 1.21);
-    if (final <= 0) {
-      const base  = limpiarNum(g(iBase));
-      const costo = limpiarNum(g(iCosto));
-      if (base  > 0) { siva = Math.round(base);        final = Math.round(base * 1.21); }
-      else if (costo > 0) { siva = Math.round(costo*1.5); final = Math.round(siva * 1.21); }
+    // Fallbacks de precio
+    if(final<=0 && siva>0)  final=Math.round(siva*1.21);
+    if(siva<=0  && final>0) siva =Math.round(final/1.21);
+    if(final<=0){
+      const base =num(g(iBase));
+      const costo=num(g(iCosto));
+      if(base>0)  { siva=Math.round(base); final=Math.round(base*1.21); }
+      else if(costo>0){ siva=Math.round(costo*1.5); final=Math.round(siva*1.21); }
     }
 
-    if (!desc || final <= 0) continue;
+    if(final<=0) continue;
 
-    if (prov) provsSet.add(prov);
-    productos.push({ codLPS, codProv, desc, prov, cat, siva:Math.round(siva), final:Math.round(final) });
+    if(prov) provsSet.add(prov);
+    productos.push({
+      codLPS,   // código LPS (ej: DD-DD14461)
+      desc,
+      prov,
+      cat,
+      siva:  Math.round(siva),
+      final: Math.round(final)
+    });
   }
 
-  // Actualizar lista de proveedores para los chips
-  proveedores = ['Todos', ...Array.from(provsSet).sort()];
+  proveedores=['Todos',...Array.from(provsSet).sort()];
   return productos;
 }
 
-function splitCSVRow(line) {
-  const cols = []; let cur = '', inQ = false;
-  for (let i = 0; i < line.length; i++) {
-    const c = line[i];
-    if (c === '"') { inQ = !inQ; }
-    else if (c === ',' && !inQ) { cols.push(cur); cur = ''; }
-    else cur += c;
-  }
-  cols.push(cur);
-  return cols;
-}
-
-function limpiarNum(v) {
-  if (!v) return 0;
-  if (typeof v === 'number') return v;
-  const s = String(v).replace(/[^\d.,\-]/g,'');
-  if (!s) return 0;
-  const clean = s.indexOf(',') > s.indexOf('.') && s.indexOf('.') !== -1
-    ? s.replace(/\./g,'').replace(',','.')
-    : s.replace(',','.');
-  return parseFloat(clean) || 0;
-}
-
 // ── CARGAR ────────────────────────────────────────────────
-async function cargar() {
-  try {
-    const r = await fetch(getCSVUrl());
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const text = await r.text();
-    todos = parseCSV(text);
-    if (todos.length === 0) throw new Error('Sin datos parseados');
-    document.getElementById('stats-txt').textContent =
-      todos.length.toLocaleString('es-AR') + ' productos disponibles';
+async function cargar(){
+  try{
+    const r=await fetch(getCSVUrl());
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const text=await r.text();
+    todos=parseCSV(text);
+    if(todos.length===0) throw new Error('0 productos parseados — revisá la URL del CSV');
+    document.getElementById('stats-txt').textContent=todos.length.toLocaleString('es-AR')+' productos disponibles';
+    document.getElementById('dolar-val').textContent='$1.420';
     renderFiltros();
-    mostrarEstadoInicio();
-    // Actualizar dólar desde el sheet CONFIG si está disponible
-    document.getElementById('dolar-val').textContent = '$1.420';
-  } catch(e) {
+    mostrarInicio();
+  }catch(e){
     console.error(e);
-    document.getElementById('lista').innerHTML = `
+    const dbg=document.getElementById('debug-bar');
+    dbg.textContent='❌ '+e.message;
+    dbg.style.background='#FFEBEE'; dbg.style.color='#C62828';
+    document.getElementById('lista').innerHTML=`
       <div class="estado">
         <div class="estado-ico">⚙️</div>
         <h3>Error al cargar</h3>
-        <p>${e.message}<br>Verificá que la hoja esté publicada como CSV.</p>
+        <p>${e.message}</p>
       </div>`;
-    document.getElementById('stats-txt').textContent = 'Error al cargar';
+    document.getElementById('stats-txt').textContent='Error';
   }
 }
 
-// ── RENDER ────────────────────────────────────────────────
-function renderFiltros() {
-  document.getElementById('filtros').innerHTML = proveedores.map(p =>
-    `<span class="chip${p===provAct?' on':''}" onclick="setProv('${p}')">${p}</span>`
+// ── UI ────────────────────────────────────────────────────
+function renderFiltros(){
+  document.getElementById('filtros').innerHTML=proveedores.map(p=>
+    `<span class="chip${p===provAct?' on':''}" onclick="setProv('${p.replace(/'/g,"\\'")}')">
+      ${COLORES[p]?.emoji||''} ${p}
+    </span>`
   ).join('');
 }
-
-function setProv(p) { provAct=p; pagina=1; renderFiltros(); buscar(); }
-function setSort(s,el) {
-  sortAct=s; pagina=1;
+function setProv(p){provAct=p;pagina=1;renderFiltros();buscar();}
+function setSort(s,el){
+  sortAct=s;pagina=1;
   document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('on'));
   el.classList.add('on');
   buscar();
 }
-function onInput() {
-  const q = document.getElementById('q').value;
-  document.getElementById('btn-clear').style.display = q?'block':'none';
-  pagina=1; buscar();
+function onInput(){
+  document.getElementById('btn-clear').style.display=document.getElementById('q').value?'block':'none';
+  pagina=1;buscar();
 }
-function limpiar() {
+function limpiar(){
   document.getElementById('q').value='';
   document.getElementById('btn-clear').style.display='none';
-  provAct='Todos'; pagina=1;
-  renderFiltros(); buscar();
+  provAct='Todos';pagina=1;renderFiltros();buscar();
 }
-
-function ars(n) { return '$'+Math.round(n).toLocaleString('es-AR'); }
-function hl(txt, q) {
-  if (!q) return txt;
-  const re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
-  return txt.replace(re,'<mark>$1</mark>');
+function ars(n){return '$'+Math.round(n).toLocaleString('es-AR');}
+function hl(txt,q){
+  if(!q||!txt) return txt;
+  try{
+    const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+    return txt.replace(re,'<mark>$1</mark>');
+  }catch(e){return txt;}
 }
-
-function mostrarEstadoInicio() {
-  document.getElementById('lista').innerHTML = `
+function mostrarInicio(){
+  document.getElementById('lista').innerHTML=`
     <div class="estado">
       <div class="estado-ico">🔍</div>
       <h3>Escribí para buscar</h3>
-      <p>Podés buscar por nombre del producto,<br>código LPS (ej: 00123)<br>o código del proveedor (ej: DD-10622)</p>
+      <p>Buscá por descripción (EXTINTOR, CERRADURA...),<br>código (DD-DD10622) o proveedor</p>
     </div>`;
 }
 
-function buscar() {
-  const q = (document.getElementById('q').value||'').trim();
-  // Normalizar sin tildes para comparar
-  const qn = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+// ── BUSCAR ────────────────────────────────────────────────
+function buscar(){
+  const q=(document.getElementById('q').value||'').trim();
+  const qn=q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 
-  if (!q && provAct==='Todos') { mostrarEstadoInicio(); return; }
+  if(!q && provAct==='Todos'){mostrarInicio();return;}
 
-  let res = [...todos];
-  if (provAct !== 'Todos') res = res.filter(p => p.prov === provAct);
+  let res=[...todos];
+  if(provAct!=='Todos') res=res.filter(p=>p.prov===provAct);
 
-  if (qn) {
-    // Buscar en TODOS los campos relevantes, dividiendo por palabras
-    const terms = qn.split(/\s+/).filter(Boolean);
-    res = res.filter(p => {
-      const haystack = [
-        p.desc,
-        p.codLPS,     // ← código LPS (número de estante)
-        p.codProv,    // ← código proveedor (ej: DD-10622)
-        p.prov,
-        p.cat
-      ].join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-      return terms.every(t => haystack.includes(t));
+  if(qn){
+    const terms=qn.split(/\s+/).filter(Boolean);
+    res=res.filter(p=>{
+      // Buscar en descripción + código LPS + proveedor + categoría
+      const hay=[p.desc,p.codLPS,p.prov,p.cat]
+        .join(' ').toLowerCase()
+        .normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      return terms.every(t=>hay.includes(t));
     });
   }
 
-  // Ordenar
-  if (sortAct==='az')          res.sort((a,b)=>a.desc.localeCompare(b.desc));
-  else if (sortAct==='precio_asc')  res.sort((a,b)=>a.final-b.final);
-  else if (sortAct==='precio_desc') res.sort((a,b)=>b.final-a.final);
-  else if (sortAct==='num')    res.sort((a,b)=>a.codLPS.localeCompare(b.codLPS));
+  if(sortAct==='az')          res.sort((a,b)=>a.desc.localeCompare(b.desc,'es'));
+  else if(sortAct==='precio_asc')  res.sort((a,b)=>a.final-b.final);
+  else if(sortAct==='precio_desc') res.sort((a,b)=>b.final-a.final);
+  else if(sortAct==='cod')    res.sort((a,b)=>a.codLPS.localeCompare(b.codLPS));
 
-  resultados = res;
-  const total = res.length;
-
-  document.getElementById('stats-txt').textContent =
-    total===0 ? 'Sin resultados' :
-    total===1 ? '1 producto encontrado' :
+  resultados=res;
+  const total=res.length;
+  document.getElementById('stats-txt').textContent=
+    total===0?'Sin resultados':
+    total===1?'1 producto encontrado':
     total.toLocaleString('es-AR')+' productos encontrados';
-  document.getElementById('stats-extra').textContent =
-    total>POR_PAG ? `Mostrando ${Math.min(pagina*POR_PAG,total)} de ${total}` : '';
+  document.getElementById('stats-extra').textContent=
+    total>POR_PAG?`Mostrando ${Math.min(pagina*POR_PAG,total)} de ${total}`:'';
 
-  const lista = document.getElementById('lista');
-
-  if (!total) {
-    lista.innerHTML = `
+  const lista=document.getElementById('lista');
+  if(!total){
+    lista.innerHTML=`
       <div class="estado">
         <div class="estado-ico">😕</div>
         <h3>No encontramos "${q}"</h3>
-        <p>Probá con otra palabra,<br>un código distinto o cambiá el proveedor</p>
+        <p>Probá con otra palabra o cambiá el proveedor</p>
       </div>`;
     return;
   }
 
-  const slice = res.slice(0, pagina*POR_PAG);
-  lista.innerHTML = slice.map(p => {
-    const cfg = COLORES[p.prov] || {bg:'#F5F5F5',emoji:'📦',cl:'#555'};
-    const tarjeta = p.final * 1.20;
+  const slice=res.slice(0,pagina*POR_PAG);
+  lista.innerHTML=slice.map(p=>{
+    const cfg=COLORES[p.prov]||{bg:'#F5F5F5',emoji:'📦'};
+    const tarjeta=p.final*1.20;
     return `
       <div class="item">
         <div class="item-ico" style="background:${cfg.bg}">${cfg.emoji}</div>
         <div class="item-info">
-          <div class="item-nom">${hl(p.desc, q)}</div>
+          <div class="item-nom">${hl(p.desc,q)}</div>
           <div class="item-badges">
-            ${p.codLPS  ? `<span class="badge-lps">${hl(p.codLPS, q)}</span>` : ''}
-            ${p.codProv ? `<span class="badge-prov">${hl(p.codProv, q)}</span>` : ''}
+            ${p.codLPS?`<span class="badge-cod">${hl(p.codLPS,q)}</span>`:''}
             <span class="badge">${p.prov}</span>
-            ${p.cat ? `<span class="badge" style="opacity:.65">${p.cat}</span>` : ''}
+            ${p.cat?`<span class="badge" style="opacity:.6">${p.cat}</span>`:''}
           </div>
         </div>
         <div class="item-precios">
@@ -479,26 +435,23 @@ function buscar() {
           </div>
         </div>
       </div>`;
-  }).join('') + (total > pagina*POR_PAG ? `
+  }).join('')+(total>pagina*POR_PAG?`
     <div class="ver-mas">
-      <button onclick="verMas()">Ver más resultados (${total-pagina*POR_PAG} restantes) ↓</button>
-    </div>` : '');
+      <button onclick="verMas()">Ver más (${total-pagina*POR_PAG} restantes) ↓</button>
+    </div>`:'');
 }
 
-function verMas() { pagina++; buscar(); }
+function verMas(){pagina++;buscar();}
 
-async function recargar() {
-  const btn = document.getElementById('btn-refresh');
-  btn.style.transform='rotate(360deg)';
-  btn.style.transition='transform .6s';
-  document.getElementById('stats-txt').textContent='Actualizando precios...';
-  document.getElementById('lista').innerHTML=`<div class="cargando"><div class="spinner"></div><p>Actualizando...</p></div>`;
+async function recargar(){
+  const btn=document.getElementById('btn-refresh');
+  btn.style.transform='rotate(360deg)';btn.style.transition='transform .6s';
+  document.getElementById('lista').innerHTML='<div class="cargando"><div class="spinner"></div><p>Actualizando...</p></div>';
   await cargar();
   setTimeout(()=>{btn.style.transform='';btn.style.transition='';},700);
-  if (document.getElementById('q').value||provAct!=='Todos') buscar();
+  if(document.getElementById('q').value||provAct!=='Todos') buscar();
 }
 
-// ── INIT ──────────────────────────────────────────────────
 renderFiltros();
 cargar();
 </script>
