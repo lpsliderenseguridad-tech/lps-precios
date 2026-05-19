@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="theme-color" content="#1A237E">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="LPS Precios">
 <link rel="manifest" href="manifest.json">
 <title>LPS — Lista de Precios</title>
@@ -13,22 +12,20 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --azul:#1A237E; --azul2:#283593; --azul3:#3949AB;
-  --amarillo:#FFD000; --rojo:#C62828; --verde:#2E7D32;
-  --bg:#F4F6FB; --card:#FFFFFF; --borde:#E0E4EF;
-  --texto:#1A1F36; --texto2:#5A6175; --texto3:#9AA0B4;
-  --mono:'DM Mono',monospace; --sans:'DM Sans',sans-serif;
-  --radio:12px; --shadow:0 2px 12px rgba(26,35,126,.10);
+  --azul:#1A237E;--azul3:#3949AB;--amarillo:#FFD000;--rojo:#C62828;
+  --bg:#F4F6FB;--card:#FFFFFF;--borde:#E0E4EF;
+  --texto:#1A1F36;--texto2:#5A6175;--texto3:#9AA0B4;
+  --mono:'DM Mono',monospace;--sans:'DM Sans',sans-serif;--radio:12px;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:100vh;-webkit-font-smoothing:antialiased;}
 .header{background:linear-gradient(135deg,var(--azul) 0%,var(--azul3) 100%);padding:18px 20px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(26,35,126,.25);}
 .header-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
-.logo{width:42px;height:42px;border-radius:50%;background:var(--amarillo);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;color:var(--azul);flex-shrink:0;box-shadow:0 2px 8px rgba(255,208,0,.4);}
+.logo{width:42px;height:42px;border-radius:50%;background:var(--amarillo);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;color:var(--azul);flex-shrink:0;}
 .header-txt{flex:1;}
 .header-txt h1{font-size:17px;font-weight:600;color:#fff;line-height:1.2;}
 .header-txt p{font-size:12px;color:rgba(255,255,255,.65);margin-top:1px;}
-.dolar-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:5px 12px;display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.8);}
+.dolar-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:5px 12px;font-size:12px;color:rgba(255,255,255,.8);}
 .dolar-pill strong{color:var(--amarillo);font-size:13px;}
 .search-wrap{position:relative;}
 .search-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--texto3);pointer-events:none;}
@@ -49,18 +46,18 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
 .col-h-desc{flex:1;font-size:10px;font-weight:600;color:var(--texto3);text-transform:uppercase;letter-spacing:.6px;}
 .col-h-precios{display:flex;flex-shrink:0;}
 .col-h-p{font-size:10px;font-weight:600;color:var(--texto3);text-transform:uppercase;letter-spacing:.5px;text-align:right;padding:0 6px;}
-.w-siva{width:70px;} .w-ef{width:90px;} .w-tc{width:88px;}
+.w-siva{width:70px;}.w-ef{width:90px;}.w-tc{width:88px;}
 .lista{background:var(--card);}
 .item{display:flex;align-items:center;padding:12px 16px;gap:11px;border-bottom:1px solid var(--borde);cursor:default;}
 .item:active{background:#F4F6FB;}
 .item-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
 .item-info{flex:1;min-width:0;}
 .item-nom{font-size:14px;font-weight:500;color:var(--texto);line-height:1.35;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
-.item-nom mark{background:#FFF176;color:var(--texto);border-radius:2px;padding:0 1px;}
+.item-nom mark,.badge-cod mark,.badge-prov mark{background:#FFF176;color:var(--texto);border-radius:2px;padding:0 1px;}
 .item-badges{display:flex;gap:4px;flex-wrap:wrap;align-items:center;}
-.badge{font-size:10px;padding:2px 6px;border-radius:20px;background:var(--bg);color:var(--texto2);border:1px solid var(--borde);}
-.badge-cod{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;background:#E3F2FD;color:#1565C0;border:1px solid #BBDEFB;font-weight:600;}
-.badge-prov{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;background:var(--bg);color:var(--texto2);border:1px solid var(--borde);}
+.badge{font-size:10px;padding:2px 7px;border-radius:20px;background:var(--bg);color:var(--texto2);border:1px solid var(--borde);}
+.badge-cod{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:4px;background:#E3F2FD;color:#1565C0;border:1px solid #BBDEFB;font-weight:600;}
+.badge-prov{font-family:var(--mono);font-size:10px;padding:2px 7px;border-radius:4px;background:#EDE7F6;color:#4527A0;border:1px solid #D1C4E9;}
 .item-precios{display:flex;align-items:center;flex-shrink:0;}
 .p-col{text-align:right;padding:0 6px;}
 .p-div{width:1px;height:28px;background:var(--borde);}
@@ -80,8 +77,6 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
 .spinner{width:36px;height:36px;border:3px solid var(--borde);border-top-color:var(--azul);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px;}
 @keyframes spin{to{transform:rotate(360deg);}}
 .cargando p{font-size:14px;color:var(--texto3);}
-/* Barra de debug - sacar cuando todo funcione */
-.debug-bar{background:#E8F5E9;padding:6px 16px;font-size:11px;color:#2E7D32;border-bottom:1px solid #C8E6C9;font-family:monospace;}
 .footer{padding:20px 16px;text-align:center;font-size:11px;color:var(--texto3);background:var(--bg);}
 @media(min-width:640px){
   .header{padding:18px 28px 16px;}
@@ -101,20 +96,22 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
       <h1>Lista de Precios LPS</h1>
       <p>Buscá por descripción, código LPS o proveedor</p>
     </div>
-    <div class="dolar-pill">💵 <strong id="dolar-val">—</strong></div>
-    <button id="btn-refresh" onclick="recargar()" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:white;flex-shrink:0;">🔄</button>
+    <div class="dolar-pill">💵 <strong id="dolar-val">$1.420</strong></div>
+    <button onclick="recargar()" title="Actualizar" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:white;flex-shrink:0;" id="btn-refresh">🔄</button>
   </div>
   <div class="search-wrap">
     <span class="search-ico">🔍</span>
     <input type="search" id="q" class="search-input"
-      placeholder="Extintor, DD-DD10622, DEBANDI..."
+      placeholder="Extintor, 04115, DEBANDI, cerradura..."
       oninput="onInput()" autocomplete="off" autocorrect="off" autocapitalize="none"/>
     <button class="search-clear" id="btn-clear" onclick="limpiar()">✕</button>
   </div>
 </div>
 
 <div class="filtros-section">
-  <div class="filtros-scroll" id="filtros"></div>
+  <div class="filtros-scroll" id="filtros">
+    <span class="chip on" onclick="setProv('Todos')">Todos</span>
+  </div>
   <div class="sort-row">
     <span class="sort-lbl">Ordenar:</span>
     <button class="sort-btn on" onclick="setSort('az',this)">A-Z</button>
@@ -125,7 +122,6 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
 </div>
 
 <div class="lista-wrap">
-  <div class="debug-bar" id="debug-bar">Cargando...</div>
   <div class="stats-bar">
     <span id="stats-txt">Cargando...</span>
     <span id="stats-extra"></span>
@@ -138,13 +134,27 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
       <div class="col-h-p w-tc" style="color:var(--rojo)">Tarjeta</div>
     </div>
   </div>
-  <div id="lista"><div class="cargando"><div class="spinner"></div><p>Cargando...</p></div></div>
+  <div id="lista"><div class="cargando"><div class="spinner"></div><p>Cargando lista de precios...</p></div></div>
   <div class="footer">LPS — Lider en Seguridad · La Carlota, Córdoba · lpsliderenseguridad@gmail.com</div>
 </div>
 
 <script>
+// ── CONFIGURACIÓN ──────────────────────────────────────────────────────
 const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRXITeiYe4R_wUNdwtKC7reDhr7dEX36VYoV3tiHudWwb5GImdEClZPeR59VXZPmd-85KpYX7wWljVh/pub?gid=41474054&single=true&output=csv';
-function getCSVUrl(){ return CSV_URL + '&t=' + Date.now(); }
+
+// COLUMNAS (índice base 0, según tu sheet):
+// A=0 CAT | B=1 PROVEEDOR | C=2 CÓD.PROV | D=3 DESCRIPCIÓN
+// E=4 PRECIO COSTO | F=5 BULTO | G=6 %MARGEN | H=7 PRECIO BASE
+// I=8 PRECIO S/IVA | J=9 PRECIO FINAL C/IVA | K=10 COD.LPS
+const COL = {
+  prov:  1,   // B - PROVEEDOR
+  codProv: 2, // C - Código del proveedor (ej: DD-DD14461)
+  desc:  3,   // D - DESCRIPCIÓN
+  siva:  8,   // I - PRECIO S/IVA
+  final: 9,   // J - PRECIO FINAL C/IVA
+  codLPS:10,  // K - CÓDIGO LPS (tu número interno, ej: 04115)
+  cat:   0,   // A - CATEGORÍA
+};
 
 const COLORES = {
   'DEBANDI':    {bg:'#E3F2FD',emoji:'🔨'},
@@ -157,12 +167,12 @@ const COLORES = {
   'ESLINGA':    {bg:'#FFF8E1',emoji:'⛓'},
 };
 
-const POR_PAG=25;
+const POR_PAG = 25;
 let todos=[], provAct='Todos', sortAct='az', pagina=1, resultados=[], proveedores=['Todos'];
 
-// ── SPLIT CSV con soporte de comillas ─────────────────────
+// ── SPLIT CSV con soporte de comillas ──────────────────────────────────
 function splitRow(line){
-  const c=[]; let cur='', inQ=false;
+  const c=[]; let cur='',inQ=false;
   for(let i=0;i<line.length;i++){
     const ch=line[i];
     if(ch==='"'){inQ=!inQ;}
@@ -173,157 +183,107 @@ function splitRow(line){
   return c;
 }
 
-// ── NORMALIZAR texto (sin tildes, mayúsculas) ─────────────
-function norm(s){ return String(s||'').trim().toUpperCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''); }
-
-// ── PARSEAR NUMERO ────────────────────────────────────────
+// ── PARSEAR NÚMERO ─────────────────────────────────────────────────────
 function num(v){
   if(!v) return 0;
   const s=String(v).replace(/[^\d.,]/g,'');
   if(!s) return 0;
-  // Si tiene punto Y coma: el que va último es el decimal
-  const dp=s.lastIndexOf('.');
-  const dc=s.lastIndexOf(',');
-  let clean;
-  if(dc>dp){ clean=s.replace(/\./g,'').replace(',','.'); }
-  else { clean=s.replace(/,/g,''); }
+  const dc=s.lastIndexOf(','), dp=s.lastIndexOf('.');
+  const clean = dc>dp ? s.replace(/\./g,'').replace(',','.') : s.replace(/,/g,'');
   return parseFloat(clean)||0;
 }
 
-// ── PARSEAR CSV ───────────────────────────────────────────
+// ── PARSEAR CSV ────────────────────────────────────────────────────────
 function parseCSV(text){
   const lines = text.trim().split('\n');
-  const dbg = document.getElementById('debug-bar');
 
-  // PASO 1: encontrar la fila de encabezados
-  // La estructura del sheet es:
-  // Fila 0: título "LPS — LISTA DE PRECIOS COMPLETA"
-  // Fila 1: encabezados CAT | PROVEEDOR | CÓD. LPS | DESCRIPCIÓN | ...
-  let hi = -1, headers = [];
+  // Buscar la fila de encabezados (la que tiene DESCRIPCI + PROVEEDOR)
+  let hi = -1;
   for(let i=0; i<Math.min(10,lines.length); i++){
-    const row = splitRow(lines[i]);
-    const joined = row.map(norm).join(' ');
-    // Buscar la fila que tenga DESCRIPCI y PROVEEDOR juntos
+    const joined = splitRow(lines[i]).join(' ').toUpperCase()
+      .normalize('NFD').replace(/[\u0300-\u036f]/g,'');
     if(joined.includes('DESCRIPCI') && joined.includes('PROVEEDOR')){
-      hi=i; headers=row.map(norm); break;
+      hi=i; break;
     }
   }
+  if(hi<0){ console.error('No se encontró fila de encabezados'); return []; }
 
-  if(hi<0){
-    dbg.textContent='❌ No se encontró fila de encabezados';
-    dbg.style.background='#FFEBEE'; dbg.style.color='#C62828';
-    return [];
-  }
-
-  // PASO 2: mapear columnas por nombre exacto o parcial
-  function col(...keys){
-    for(const k of keys){
-      const kn=norm(k);
-      let idx=headers.findIndex(h=>h===kn);
-      if(idx>=0) return idx;
-      idx=headers.findIndex(h=>h.includes(kn));
-      if(idx>=0) return idx;
-    }
-    return -1;
-  }
-
-  // Columnas del sheet según la captura:
-  // A=CAT, B=PROVEEDOR, C=CÓD.LPS, D=DESCRIPCIÓN,
-  // E=PRECIO COSTO, F=BULTO, G=%MARGEN, H=PRECIO BASE,
-  // I=PRECIO S/IVA, J=PRECIO FINAL C/IVA, K=MONEDA
-  const iCat    = col('CAT');
-  const iProv   = col('PROVEEDOR');
-  const iCod    = col('COD. LPS','COD LPS','CODIGO LPS','CÓD. LPS');
-  const iDesc   = col('DESCRIPCION','DESCRIPCIÓN','DESC');
-  const iSiva   = col('S/IVA','PRECIO S/IVA','SIVA');
-  const iFinal  = col('PRECIO FINAL','FINAL C/IVA','FINAL','EFECTIVO');
-  const iBase   = col('PRECIO BASE','BASE');
-  const iCosto  = col('PRECIO COSTO','COSTO');
-  const iBulto  = col('BULTO');
-  const iMoneda = col('MONEDA');
-
-  dbg.textContent = `✓ Headers fila ${hi+1} | Cat:${iCat} Prov:${iProv} Cod:${iCod} Desc:${iDesc} S/IVA:${iSiva} Final:${iFinal}`;
-  dbg.style.background='#E8F5E9'; dbg.style.color='#2E7D32';
-
-  // PASO 3: parsear productos
-  const productos=[], provsSet=new Set();
+  // Proveedores válidos (solo texto, sin números)
+  const provsSet = new Set();
+  const productos = [];
 
   for(let i=hi+1; i<lines.length; i++){
-    const row=splitRow(lines[i]);
-    const g=idx=>idx>=0?(row[idx]||'').trim():'';
+    const row = splitRow(lines[i]);
+    const g = idx => (row[idx]||'').trim();
 
-    const codLPS  = g(iCod);
-    const desc    = g(iDesc);
-    const prov    = g(iProv).toUpperCase().trim();
-    const cat     = g(iCat);
+    const desc    = g(COL.desc);
+    const prov    = g(COL.prov).toUpperCase().trim();
+    const codLPS  = g(COL.codLPS);   // tu código interno (ej: 04115)
+    const codProv = g(COL.codProv);  // código proveedor  (ej: DD-DD14461)
+    const cat     = g(COL.cat);
 
-    if(!desc) continue; // skip filas vacías
+    if(!desc) continue;
 
-    let siva  = num(g(iSiva));
-    let final = num(g(iFinal));
+    // Filtrar proveedores inválidos (solo letras, no números/porcentajes)
+    const provValido = prov && /^[A-ZÁÉÍÓÚÑÜ\s]+$/.test(prov) && prov.length > 1 && prov.length < 30;
 
-    // Fallbacks de precio
-    if(final<=0 && siva>0)  final=Math.round(siva*1.21);
-    if(siva<=0  && final>0) siva =Math.round(final/1.21);
-    if(final<=0){
-      const base =num(g(iBase));
-      const costo=num(g(iCosto));
-      if(base>0)  { siva=Math.round(base); final=Math.round(base*1.21); }
-      else if(costo>0){ siva=Math.round(costo*1.5); final=Math.round(siva*1.21); }
-    }
+    let siva  = num(g(COL.siva));
+    let final = num(g(COL.final));
 
+    if(final<=0 && siva>0)  final = Math.round(siva*1.21);
+    if(siva<=0  && final>0) siva  = Math.round(final/1.21);
     if(final<=0) continue;
 
-    if(prov) provsSet.add(prov);
+    if(provValido) provsSet.add(prov);
+
     productos.push({
-      codLPS,   // código LPS (ej: DD-DD14461)
+      codLPS,   // número interno LPS (ej: 04115)
+      codProv,  // código del proveedor (ej: DD-DD14461)
       desc,
-      prov,
+      prov: provValido ? prov : '',
       cat,
       siva:  Math.round(siva),
       final: Math.round(final)
     });
   }
 
-  proveedores=['Todos',...Array.from(provsSet).sort()];
+  proveedores = ['Todos', ...Array.from(provsSet).sort()];
   return productos;
 }
 
-// ── CARGAR ────────────────────────────────────────────────
+// ── CARGAR ─────────────────────────────────────────────────────────────
 async function cargar(){
   try{
-    const r=await fetch(getCSVUrl());
+    const r = await fetch(CSV_URL+'&t='+Date.now());
     if(!r.ok) throw new Error('HTTP '+r.status);
-    const text=await r.text();
-    todos=parseCSV(text);
-    if(todos.length===0) throw new Error('0 productos parseados — revisá la URL del CSV');
-    document.getElementById('stats-txt').textContent=todos.length.toLocaleString('es-AR')+' productos disponibles';
-    document.getElementById('dolar-val').textContent='$1.420';
+    const text = await r.text();
+    todos = parseCSV(text);
+    if(todos.length===0) throw new Error('Sin datos. Verificá que el Sheet esté publicado como CSV.');
+    document.getElementById('stats-txt').textContent = todos.length.toLocaleString('es-AR')+' productos disponibles';
     renderFiltros();
     mostrarInicio();
   }catch(e){
     console.error(e);
-    const dbg=document.getElementById('debug-bar');
-    dbg.textContent='❌ '+e.message;
-    dbg.style.background='#FFEBEE'; dbg.style.color='#C62828';
     document.getElementById('lista').innerHTML=`
       <div class="estado">
         <div class="estado-ico">⚙️</div>
         <h3>Error al cargar</h3>
         <p>${e.message}</p>
       </div>`;
-    document.getElementById('stats-txt').textContent='Error';
+    document.getElementById('stats-txt').textContent='Error al cargar';
   }
 }
 
-// ── UI ────────────────────────────────────────────────────
+// ── UI ──────────────────────────────────────────────────────────────────
 function renderFiltros(){
-  document.getElementById('filtros').innerHTML=proveedores.map(p=>
-    `<span class="chip${p===provAct?' on':''}" onclick="setProv('${p.replace(/'/g,"\\'")}')">
-      ${COLORES[p]?.emoji||''} ${p}
-    </span>`
-  ).join('');
+  document.getElementById('filtros').innerHTML = proveedores.map(p=>{
+    const ico = COLORES[p]?.emoji || '';
+    return `<span class="chip${p===provAct?' on':''}" onclick="setProv('${p.replace(/'/g,"\\'")}')">
+      ${ico} ${p}
+    </span>`;
+  }).join('');
 }
+
 function setProv(p){provAct=p;pagina=1;renderFiltros();buscar();}
 function setSort(s,el){
   sortAct=s;pagina=1;
@@ -332,8 +292,8 @@ function setSort(s,el){
   buscar();
 }
 function onInput(){
-  document.getElementById('btn-clear').style.display=document.getElementById('q').value?'block':'none';
-  pagina=1;buscar();
+  document.getElementById('btn-clear').style.display = document.getElementById('q').value?'block':'none';
+  pagina=1; buscar();
 }
 function limpiar(){
   document.getElementById('q').value='';
@@ -345,7 +305,7 @@ function hl(txt,q){
   if(!q||!txt) return txt;
   try{
     const re=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
-    return txt.replace(re,'<mark>$1</mark>');
+    return String(txt).replace(re,'<mark>$1</mark>');
   }catch(e){return txt;}
 }
 function mostrarInicio(){
@@ -353,11 +313,13 @@ function mostrarInicio(){
     <div class="estado">
       <div class="estado-ico">🔍</div>
       <h3>Escribí para buscar</h3>
-      <p>Buscá por descripción (EXTINTOR, CERRADURA...),<br>código (DD-DD10622) o proveedor</p>
+      <p>Por descripción: <b>extintor, cerradura...</b><br>
+         Por código LPS: <b>04115</b><br>
+         Por código proveedor: <b>DD-DD14461</b></p>
     </div>`;
 }
 
-// ── BUSCAR ────────────────────────────────────────────────
+// ── BUSCAR ──────────────────────────────────────────────────────────────
 function buscar(){
   const q=(document.getElementById('q').value||'').trim();
   const qn=q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
@@ -370,21 +332,21 @@ function buscar(){
   if(qn){
     const terms=qn.split(/\s+/).filter(Boolean);
     res=res.filter(p=>{
-      // Buscar en descripción + código LPS + proveedor + categoría
-      const hay=[p.desc,p.codLPS,p.prov,p.cat]
+      const hay=[p.desc, p.codLPS, p.codProv, p.prov, p.cat]
         .join(' ').toLowerCase()
         .normalize('NFD').replace(/[\u0300-\u036f]/g,'');
       return terms.every(t=>hay.includes(t));
     });
   }
 
-  if(sortAct==='az')          res.sort((a,b)=>a.desc.localeCompare(b.desc,'es'));
-  else if(sortAct==='precio_asc')  res.sort((a,b)=>a.final-b.final);
-  else if(sortAct==='precio_desc') res.sort((a,b)=>b.final-a.final);
-  else if(sortAct==='cod')    res.sort((a,b)=>a.codLPS.localeCompare(b.codLPS));
+  if(sortAct==='az')           res.sort((a,b)=>a.desc.localeCompare(b.desc,'es'));
+  else if(sortAct==='precio_asc')   res.sort((a,b)=>a.final-b.final);
+  else if(sortAct==='precio_desc')  res.sort((a,b)=>b.final-a.final);
+  else if(sortAct==='cod')     res.sort((a,b)=>a.codLPS.localeCompare(b.codLPS,'es',{numeric:true}));
 
   resultados=res;
   const total=res.length;
+
   document.getElementById('stats-txt').textContent=
     total===0?'Sin resultados':
     total===1?'1 producto encontrado':
@@ -406,16 +368,17 @@ function buscar(){
   const slice=res.slice(0,pagina*POR_PAG);
   lista.innerHTML=slice.map(p=>{
     const cfg=COLORES[p.prov]||{bg:'#F5F5F5',emoji:'📦'};
-    const tarjeta=p.final*1.20;
+    const tarjeta=Math.round(p.final*1.20);
     return `
       <div class="item">
         <div class="item-ico" style="background:${cfg.bg}">${cfg.emoji}</div>
         <div class="item-info">
           <div class="item-nom">${hl(p.desc,q)}</div>
           <div class="item-badges">
-            ${p.codLPS?`<span class="badge-cod">${hl(p.codLPS,q)}</span>`:''}
-            <span class="badge">${p.prov}</span>
-            ${p.cat?`<span class="badge" style="opacity:.6">${p.cat}</span>`:''}
+            ${p.codLPS  ? `<span class="badge-cod">${hl(p.codLPS,q)}</span>` : ''}
+            ${p.codProv ? `<span class="badge-prov">${hl(p.codProv,q)}</span>` : ''}
+            ${p.prov    ? `<span class="badge">${p.prov}</span>` : ''}
+            ${p.cat     ? `<span class="badge" style="opacity:.6">${p.cat}</span>` : ''}
           </div>
         </div>
         <div class="item-precios">
@@ -452,7 +415,6 @@ async function recargar(){
   if(document.getElementById('q').value||provAct!=='Todos') buscar();
 }
 
-renderFiltros();
 cargar();
 </script>
 </body>
