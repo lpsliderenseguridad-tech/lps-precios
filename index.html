@@ -13,353 +13,126 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --azul:    #1A237E;
-  --azul2:   #283593;
-  --azul3:   #3949AB;
-  --amarillo:#FFD000;
-  --rojo:    #C62828;
-  --verde:   #2E7D32;
-  --naranja: #E65100;
-  --bg:      #F4F6FB;
-  --card:    #FFFFFF;
-  --borde:   #E0E4EF;
-  --texto:   #1A1F36;
-  --texto2:  #5A6175;
-  --texto3:  #9AA0B4;
-  --mono:    'DM Mono', monospace;
-  --sans:    'DM Sans', sans-serif;
-  --radio:   12px;
-  --radio-sm:8px;
-  --shadow:  0 2px 12px rgba(26,35,126,.10);
+  --azul:#1A237E; --azul2:#283593; --azul3:#3949AB;
+  --amarillo:#FFD000; --rojo:#C62828; --verde:#2E7D32;
+  --bg:#F4F6FB; --card:#FFFFFF; --borde:#E0E4EF;
+  --texto:#1A1F36; --texto2:#5A6175; --texto3:#9AA0B4;
+  --mono:'DM Mono',monospace; --sans:'DM Sans',sans-serif;
+  --radio:12px; --shadow:0 2px 12px rgba(26,35,126,.10);
 }
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:100vh;-webkit-font-smoothing:antialiased;}
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* HEADER */
+.header{background:linear-gradient(135deg,var(--azul) 0%,var(--azul3) 100%);padding:18px 20px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(26,35,126,.25);}
+.header-top{display:flex;align-items:center;gap:12px;margin-bottom:14px;}
+.logo{width:42px;height:42px;border-radius:50%;background:var(--amarillo);display:flex;align-items:center;justify-content:center;font-weight:600;font-size:15px;color:var(--azul);flex-shrink:0;box-shadow:0 2px 8px rgba(255,208,0,.4);}
+.header-txt{flex:1;}
+.header-txt h1{font-size:17px;font-weight:600;color:#fff;line-height:1.2;}
+.header-txt p{font-size:12px;color:rgba(255,255,255,.65);margin-top:1px;}
+.dolar-pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:5px 12px;display:flex;align-items:center;gap:6px;font-size:12px;color:rgba(255,255,255,.8);}
+.dolar-pill strong{color:var(--amarillo);font-size:13px;}
+.search-wrap{position:relative;}
+.search-ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:18px;color:var(--texto3);pointer-events:none;}
+.search-input{width:100%;padding:13px 44px 13px 44px;font-size:16px;font-family:var(--sans);background:rgba(255,255,255,.95);border:none;border-radius:var(--radio);color:var(--texto);outline:none;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.search-input::placeholder{color:var(--texto3);}
+.search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--texto3);font-size:16px;padding:4px;display:none;}
 
-body {
-  font-family: var(--sans);
-  background: var(--bg);
-  color: var(--texto);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
-}
+/* FILTROS */
+.filtros-section{background:var(--card);padding:12px 16px 10px;border-bottom:1px solid var(--borde);position:sticky;top:118px;z-index:90;}
+.filtros-scroll{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-bottom:10px;}
+.filtros-scroll::-webkit-scrollbar{display:none;}
+.chip{flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:13px;font-weight:500;border:1.5px solid var(--borde);background:var(--bg);color:var(--texto2);cursor:pointer;user-select:none;transition:all .15s;}
+.chip.on{background:var(--azul);color:#fff;border-color:var(--azul);box-shadow:0 2px 8px rgba(26,35,126,.3);}
+.sort-row{display:flex;gap:6px;align-items:center;}
+.sort-lbl{font-size:11px;color:var(--texto3);flex-shrink:0;}
+.sort-btn{padding:4px 12px;border-radius:20px;font-size:11px;font-family:var(--sans);border:1px solid var(--borde);background:transparent;color:var(--texto2);cursor:pointer;transition:all .12s;}
+.sort-btn.on{background:var(--azul);color:#fff;border-color:var(--azul);}
 
-/* ── HEADER ─────────────────────────────── */
-.header {
-  background: linear-gradient(135deg, var(--azul) 0%, var(--azul3) 100%);
-  padding: 18px 20px 16px;
-  position: sticky; top: 0; z-index: 100;
-  box-shadow: 0 2px 16px rgba(26,35,126,.25);
-}
+/* STATS */
+.stats-bar{padding:8px 16px;background:var(--bg);border-bottom:1px solid var(--borde);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--texto3);}
+.col-header{display:flex;align-items:center;padding:7px 16px;background:#F0F3FA;border-bottom:1px solid var(--borde);}
+.col-h-desc{flex:1;font-size:10px;font-weight:600;color:var(--texto3);text-transform:uppercase;letter-spacing:.6px;}
+.col-h-precios{display:flex;gap:0;flex-shrink:0;}
+.col-h-p{font-size:10px;font-weight:600;color:var(--texto3);text-transform:uppercase;letter-spacing:.5px;text-align:right;padding:0 6px;}
+.w-siva{width:70px;} .w-ef{width:90px;} .w-tc{width:88px;}
 
-.header-top {
-  display: flex; align-items: center; gap: 12px; margin-bottom: 14px;
-}
+/* ITEMS */
+.lista{background:var(--card);}
+.item{display:flex;align-items:center;padding:12px 16px;gap:11px;border-bottom:1px solid var(--borde);transition:background .1s;cursor:default;}
+.item:active{background:#F4F6FB;}
+.item:last-child{border-bottom:none;}
+.item-ico{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+.item-info{flex:1;min-width:0;}
+.item-nom{font-size:14px;font-weight:500;color:var(--texto);line-height:1.35;margin-bottom:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.item-nom mark{background:#FFF176;color:var(--texto);border-radius:2px;padding:0 1px;}
+.item-badges{display:flex;gap:4px;flex-wrap:wrap;align-items:center;}
+.badge{font-size:10px;padding:2px 6px;border-radius:20px;background:var(--bg);color:var(--texto2);border:1px solid var(--borde);white-space:nowrap;}
+.badge-lps{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;background:#E3F2FD;color:#1565C0;border:1px solid #BBDEFB;font-weight:600;}
+.badge-prov{font-family:var(--mono);font-size:10px;padding:2px 6px;border-radius:4px;background:var(--bg);color:var(--texto2);border:1px solid var(--borde);}
+.item-precios{display:flex;align-items:center;flex-shrink:0;gap:0;}
+.p-col{text-align:right;padding:0 6px;}
+.p-div{width:1px;height:28px;background:var(--borde);}
+.p-siva-val{font-family:var(--mono);font-size:11px;color:var(--texto2);}
+.p-siva-lbl{font-size:9px;color:var(--texto3);margin-top:1px;}
+.p-ef-val{font-size:17px;font-weight:600;color:var(--texto);line-height:1.1;}
+.p-ef-lbl{font-size:9px;color:var(--texto3);margin-top:2px;}
+.p-tc-val{font-size:14px;font-weight:600;color:var(--rojo);line-height:1.1;}
+.p-tc-lbl{font-size:9px;color:var(--texto3);margin-top:2px;}
 
-.logo {
-  width: 42px; height: 42px; border-radius: 50%;
-  background: var(--amarillo);
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 600; font-size: 15px; color: var(--azul);
-  flex-shrink: 0; letter-spacing: -.5px;
-  box-shadow: 0 2px 8px rgba(255,208,0,.4);
-}
+/* ESTADO VACÍO */
+.estado{text-align:center;padding:52px 24px;background:var(--card);}
+.estado-ico{font-size:48px;margin-bottom:14px;opacity:.3;}
+.estado h3{font-size:17px;font-weight:500;color:var(--texto2);margin-bottom:6px;}
+.estado p{font-size:13px;color:var(--texto3);line-height:1.5;}
 
-.header-txt { flex: 1; }
-.header-txt h1 { font-size: 17px; font-weight: 600; color: #fff; line-height: 1.2; }
-.header-txt p  { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 1px; }
+/* VER MÁS */
+.ver-mas{text-align:center;padding:16px;background:var(--card);border-top:1px solid var(--borde);}
+.ver-mas button{padding:11px 28px;background:var(--bg);color:var(--texto2);border:1.5px solid var(--borde);border-radius:var(--radio);font-size:14px;font-family:var(--sans);cursor:pointer;font-weight:500;}
 
-.dolar-pill {
-  background: rgba(255,255,255,.12);
-  border: 1px solid rgba(255,255,255,.2);
-  border-radius: 20px;
-  padding: 5px 12px;
-  display: flex; align-items: center; gap: 6px;
-  font-size: 12px; color: rgba(255,255,255,.8);
-}
-.dolar-pill strong { color: var(--amarillo); font-size: 13px; }
+/* CARGANDO */
+.cargando{text-align:center;padding:52px 24px;background:var(--card);}
+.spinner{width:36px;height:36px;border:3px solid var(--borde);border-top-color:var(--azul);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 14px;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.cargando p{font-size:14px;color:var(--texto3);}
 
-/* ── BUSCADOR ────────────────────────────── */
-.search-wrap {
-  position: relative;
-}
-.search-ico {
-  position: absolute; left: 14px; top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px; color: var(--texto3); pointer-events: none;
-}
-.search-input {
-  width: 100%; padding: 13px 44px 13px 44px;
-  font-size: 16px; font-family: var(--sans);
-  background: rgba(255,255,255,.95);
-  border: none; border-radius: var(--radio);
-  color: var(--texto); outline: none;
-  box-shadow: 0 2px 8px rgba(0,0,0,.15);
-}
-.search-input::placeholder { color: var(--texto3); }
-.search-clear {
-  position: absolute; right: 12px; top: 50%;
-  transform: translateY(-50%);
-  background: none; border: none; cursor: pointer;
-  color: var(--texto3); font-size: 16px; padding: 4px;
-  display: none;
-}
+/* DEBUG INFO */
+.debug-bar{background:#FFF3E0;padding:8px 16px;font-size:11px;color:#E65100;border-bottom:1px solid #FFE0B2;display:none;}
 
-/* ── FILTROS ─────────────────────────────── */
-.filtros-section {
-  background: var(--card);
-  padding: 12px 16px 10px;
-  border-bottom: 1px solid var(--borde);
-  position: sticky; top: 118px; z-index: 90;
-}
+.footer{padding:20px 16px;text-align:center;font-size:11px;color:var(--texto3);background:var(--bg);}
 
-.filtros-scroll {
-  display: flex; gap: 7px; overflow-x: auto;
-  scrollbar-width: none; padding-bottom: 2px;
-  margin-bottom: 10px;
-}
-.filtros-scroll::-webkit-scrollbar { display: none; }
-
-.chip {
-  flex-shrink: 0; padding: 6px 14px;
-  border-radius: 20px; font-size: 13px; font-weight: 500;
-  border: 1.5px solid var(--borde);
-  background: var(--bg); color: var(--texto2);
-  cursor: pointer; user-select: none;
-  transition: all .15s;
-}
-.chip:active { transform: scale(.97); }
-.chip.on {
-  background: var(--azul); color: #fff;
-  border-color: var(--azul);
-  box-shadow: 0 2px 8px rgba(26,35,126,.3);
-}
-
-.sort-row {
-  display: flex; gap: 6px; align-items: center;
-}
-.sort-lbl { font-size: 11px; color: var(--texto3); flex-shrink: 0; }
-.sort-btn {
-  padding: 4px 12px; border-radius: 20px;
-  font-size: 11px; font-family: var(--sans);
-  border: 1px solid var(--borde);
-  background: transparent; color: var(--texto2);
-  cursor: pointer; transition: all .12s;
-}
-.sort-btn.on {
-  background: var(--azul); color: #fff;
-  border-color: var(--azul);
-}
-
-/* ── BARRA DE STATS ──────────────────────── */
-.stats-bar {
-  padding: 8px 16px;
-  background: var(--bg);
-  border-bottom: 1px solid var(--borde);
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 12px; color: var(--texto3);
-}
-.stats-bar strong { color: var(--texto2); }
-
-/* ── CABECERA COLUMNAS ───────────────────── */
-.col-header {
-  display: flex; align-items: center;
-  padding: 7px 16px;
-  background: #F0F3FA;
-  border-bottom: 1px solid var(--borde);
-}
-.col-h-desc { flex: 1; font-size: 10px; font-weight: 600; color: var(--texto3); text-transform: uppercase; letter-spacing: .6px; }
-.col-h-precios { display: flex; gap: 0; flex-shrink: 0; }
-.col-h-p { font-size: 10px; font-weight: 600; color: var(--texto3); text-transform: uppercase; letter-spacing: .5px; text-align: right; padding: 0 6px; }
-.w-siva { width: 70px; }
-.w-ef   { width: 90px; }
-.w-tc   { width: 88px; }
-
-/* ── LISTA ───────────────────────────────── */
-.lista { background: var(--card); }
-
-.item {
-  display: flex; align-items: center;
-  padding: 12px 16px; gap: 11px;
-  border-bottom: 1px solid var(--borde);
-  transition: background .1s;
-  cursor: default;
-}
-.item:active { background: #F4F6FB; }
-.item:last-child { border-bottom: none; }
-
-.item-ico {
-  width: 38px; height: 38px; border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 18px; flex-shrink: 0;
-}
-
-.item-info { flex: 1; min-width: 0; }
-
-.item-nom {
-  font-size: 14px; font-weight: 500; color: var(--texto);
-  line-height: 1.35; margin-bottom: 4px;
-  display: -webkit-box; -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical; overflow: hidden;
-}
-.item-nom mark {
-  background: #FFF176; color: var(--texto);
-  border-radius: 2px; padding: 0 1px;
-}
-
-.item-badges { display: flex; gap: 4px; flex-wrap: wrap; align-items: center; }
-
-.badge {
-  font-size: 10px; padding: 2px 6px;
-  border-radius: 20px;
-  background: var(--bg); color: var(--texto2);
-  border: 1px solid var(--borde);
-  white-space: nowrap;
-}
-.badge-num {
-  font-family: var(--mono); font-size: 10px;
-  padding: 2px 6px; border-radius: 4px;
-  background: #E8F5E9; color: var(--verde);
-  border: 1px solid #C8E6C9; font-weight: 500;
-}
-.badge-cod {
-  font-family: var(--mono); font-size: 10px;
-  padding: 2px 6px; border-radius: 4px;
-  background: var(--bg); color: var(--texto2);
-  border: 1px solid var(--borde);
-}
-
-/* PRECIOS */
-.item-precios {
-  display: flex; align-items: center;
-  flex-shrink: 0; gap: 0;
-}
-.p-col { text-align: right; padding: 0 6px; }
-.p-div { width: 1px; height: 28px; background: var(--borde); }
-
-.p-siva-val { font-family: var(--mono); font-size: 11px; color: var(--texto2); }
-.p-siva-lbl { font-size: 9px; color: var(--texto3); margin-top: 1px; }
-
-.p-ef-val { font-size: 17px; font-weight: 600; color: var(--texto); line-height: 1.1; }
-.p-ef-lbl { font-size: 9px; color: var(--texto3); margin-top: 2px; }
-
-.p-tc-val { font-size: 14px; font-weight: 600; color: var(--rojo); line-height: 1.1; }
-.p-tc-lbl { font-size: 9px; color: var(--texto3); margin-top: 2px; }
-
-/* ── ESTADO VACÍO ────────────────────────── */
-.estado {
-  text-align: center; padding: 52px 24px;
-  background: var(--card);
-}
-.estado-ico { font-size: 48px; margin-bottom: 14px; opacity: .3; }
-.estado h3 { font-size: 17px; font-weight: 500; color: var(--texto2); margin-bottom: 6px; }
-.estado p { font-size: 13px; color: var(--texto3); line-height: 1.5; }
-
-/* ── VER MÁS ─────────────────────────────── */
-.ver-mas {
-  text-align: center; padding: 16px;
-  background: var(--card); border-top: 1px solid var(--borde);
-}
-.ver-mas button {
-  padding: 11px 28px;
-  background: var(--bg); color: var(--texto2);
-  border: 1.5px solid var(--borde);
-  border-radius: var(--radio);
-  font-size: 14px; font-family: var(--sans);
-  cursor: pointer; font-weight: 500;
-  transition: all .15s;
-}
-.ver-mas button:active { background: var(--borde); }
-
-/* ── CARGANDO ────────────────────────────── */
-.cargando {
-  text-align: center; padding: 52px 24px;
-  background: var(--card);
-}
-.spinner {
-  width: 36px; height: 36px;
-  border: 3px solid var(--borde);
-  border-top-color: var(--azul);
-  border-radius: 50%;
-  animation: spin .8s linear infinite;
-  margin: 0 auto 14px;
-}
-@keyframes spin { to { transform: rotate(360deg); } }
-.cargando p { font-size: 14px; color: var(--texto3); }
-
-/* ── FOOTER ──────────────────────────────── */
-.footer {
-  padding: 20px 16px;
-  text-align: center;
-  font-size: 11px; color: var(--texto3);
-  background: var(--bg);
-}
-
-/* ── PWA INSTALL BANNER ──────────────────── */
-.install-banner {
-  background: var(--azul2);
-  color: #fff;
-  padding: 12px 16px;
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px;
-}
-.install-banner button {
-  margin-left: auto; flex-shrink: 0;
-  padding: 6px 14px;
-  background: var(--amarillo); color: var(--azul);
-  border: none; border-radius: 20px;
-  font-size: 12px; font-weight: 600;
-  cursor: pointer;
-}
-.install-banner .ib-close {
-  background: transparent; color: rgba(255,255,255,.6);
-  padding: 4px; margin-left: 4px;
-  font-size: 16px;
-}
-
-@media (min-width: 640px) {
-  .header { padding: 18px 28px 16px; }
-  .filtros-section { padding: 12px 28px 10px; }
-  .stats-bar, .col-header { padding: 8px 28px; }
-  .item { padding: 14px 28px; }
-  .lista-wrap { max-width: 860px; margin: 0 auto; }
-  .item-nom { font-size: 15px; }
-  .p-ef-val { font-size: 18px; }
+@media(min-width:640px){
+  .header{padding:18px 28px 16px;}
+  .filtros-section{padding:12px 28px 10px;}
+  .stats-bar,.col-header{padding:8px 28px;}
+  .item{padding:14px 28px;}
+  .lista-wrap{max-width:860px;margin:0 auto;}
+  .item-nom{font-size:15px;}
+  .p-ef-val{font-size:18px;}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="header-top">
     <div class="logo">LPS</div>
     <div class="header-txt">
       <h1>Lista de Precios LPS</h1>
-      <p>Buscá por nombre, código o número de estante</p>
+      <p>Buscá por nombre, código LPS o código proveedor</p>
     </div>
-    <div class="dolar-pill">
-      💵 <strong id="dolar-val">—</strong>
-    </div>
-    <button id="btn-refresh" onclick="recargar()" title="Actualizar precios" style="
-      background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
-      border-radius:50%;width:36px;height:36px;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
-      font-size:16px;color:white;flex-shrink:0;transition:transform .3s;
-    ">🔄</button>
+    <div class="dolar-pill">💵 <strong id="dolar-val">—</strong></div>
+    <button id="btn-refresh" onclick="recargar()" title="Actualizar precios" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:white;flex-shrink:0;">🔄</button>
   </div>
   <div class="search-wrap">
     <span class="search-ico">🔍</span>
-    <input
-      type="search" id="q" class="search-input"
-      placeholder="Nombre, código 00123, DD-10622..."
-      oninput="onInput()" autocomplete="off"
-      autocorrect="off" autocapitalize="none"
-    />
+    <input type="search" id="q" class="search-input"
+      placeholder="Nombre, código LPS (ej: 00123), código proveedor (ej: DD-10622)..."
+      oninput="onInput()" autocomplete="off" autocorrect="off" autocapitalize="none"/>
     <button class="search-clear" id="btn-clear" onclick="limpiar()">✕</button>
   </div>
 </div>
 
-<!-- FILTROS -->
 <div class="filtros-section">
   <div class="filtros-scroll" id="filtros"></div>
   <div class="sort-row">
@@ -371,13 +144,12 @@ body {
   </div>
 </div>
 
-<!-- CONTENIDO -->
 <div class="lista-wrap">
+  <div class="debug-bar" id="debug-bar"></div>
   <div class="stats-bar">
     <span id="stats-txt">Cargando...</span>
     <span id="stats-extra"></span>
   </div>
-
   <div class="col-header">
     <div class="col-h-desc">Producto</div>
     <div class="col-h-precios">
@@ -386,26 +158,16 @@ body {
       <div class="col-h-p w-tc" style="color:var(--rojo)">Tarjeta</div>
     </div>
   </div>
-
   <div id="lista">
-    <div class="cargando">
-      <div class="spinner"></div>
-      <p>Cargando lista de precios...</p>
-    </div>
+    <div class="cargando"><div class="spinner"></div><p>Cargando lista de precios...</p></div>
   </div>
-
-  <div class="footer">
-    LPS — Lider en Seguridad · La Carlota, Córdoba · lpsliderenseguridad@gmail.com
-  </div>
+  <div class="footer">LPS — Lider en Seguridad · La Carlota, Córdoba · lpsliderenseguridad@gmail.com</div>
 </div>
 
 <script>
 // ── CONFIGURACIÓN ─────────────────────────────────────────
-const SHEET_ID  = '10dpeg2RusKJJZOjQP4sk1b2GpvbgnMNFWVAezpvu5rA';
-const SHEET_GID = '2120854645'; // LISTA DE PRECIOS
-const CSV_BASE  = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRXITeiYe4R_wUNdwtKC7reDhr7dEX36VYoV3tiHudWwb5GImdEClZPeR59VXZPmd-85KpYX7wWljVh/pub?gid=2120854645&single=true&output=csv';
-// Timestamp para forzar recarga y evitar caché
-function getCSVUrl() { return CSV_BASE + '&t=' + Date.now(); }
+const CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRXITeiYe4R_wUNdwtKC7reDhr7dEX36VYoV3tiHudWwb5GImdEClZPeR59VXZPmd-85KpYX7wWljVh/pub?gid=2120854645&single=true&output=csv';
+function getCSVUrl() { return CSV_URL + '&t=' + Date.now(); }
 
 const COLORES = {
   'DEBANDI':    {bg:'#E3F2FD', emoji:'🔨', cl:'#1565C0'},
@@ -414,88 +176,129 @@ const COLORES = {
   'CARBUROX':   {bg:'#FCE4EC', emoji:'🔥', cl:'#C62828'},
   'TOSI':       {bg:'#EDE7F6', emoji:'🛡', cl:'#4527A0'},
   'CBA PAIS':   {bg:'#E0F7FA', emoji:'📦', cl:'#00695C'},
+  'CEG':        {bg:'#E8F5E9', emoji:'🛒', cl:'#2E7D32'},
+  'ESLINGA':    {bg:'#FFF8E1', emoji:'⛓', cl:'#F57F17'},
 };
 
-const PROVS = ['Todos','DEBANDI','CBA PAIS','PINTURERIA','CARBUROX','TOSI','ECOLED'];
 const POR_PAG = 25;
-
-let todos = [], provAct = 'Todos', sortAct = 'az';
-let pagina = 1, resultados = [];
+let todos = [], provAct = 'Todos', sortAct = 'az', pagina = 1, resultados = [];
+let proveedores = ['Todos'];
 
 // ── PARSEAR CSV ───────────────────────────────────────────
+function norm(s) {
+  return String(s||'').trim().toUpperCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+
 function parseCSV(text) {
   const lines = text.trim().split('\n');
   if (lines.length < 3) return [];
 
-  // Buscar fila de headers
+  // Buscar fila de encabezados
   let hi = -1, headers = [];
-  for (let i = 0; i < Math.min(6, lines.length); i++) {
+  for (let i = 0; i < Math.min(8, lines.length); i++) {
     const row = splitCSVRow(lines[i]);
-    const txt = row.join(' ').toUpperCase();
-    if (txt.includes('DESCRIPCI') || (txt.includes('PROVEEDOR') && txt.includes('PRECIO'))) {
+    const txt = row.map(norm).join(' ');
+    if (txt.includes('DESCRIPCI') || txt.includes('PROVEEDOR')) {
       hi = i;
-      headers = row.map(h => h.replace(/^"|"$/g,'').trim()
-        .normalize('NFD').replace(/[\u0300-\u036f]/g,'').toUpperCase());
+      headers = row.map(norm);
       break;
     }
   }
   if (hi < 0) return [];
 
-  // Detectar índices de forma flexible
+  // ── DETECCIÓN DE COLUMNAS ─────────────────────────────
+  // Busca coincidencia exacta primero, luego parcial
   function col(...keys) {
     for (const k of keys) {
-      // Primero buscar match exacto
-      let idx = headers.findIndex(h => h === k);
+      const kn = norm(k);
+      // Exacto
+      let idx = headers.findIndex(h => h === kn);
       if (idx >= 0) return idx;
-      // Luego buscar que contenga la clave
-      idx = headers.findIndex(h => h.includes(k));
+      // Contiene
+      idx = headers.findIndex(h => h.includes(kn));
       if (idx >= 0) return idx;
     }
     return -1;
   }
 
-  const iCat    = col('CAT');
-  const iProv   = col('PROVEEDOR');
-  // CÓD. LPS debe matchear antes que CÓD. INTERNO
-  const iCod    = col('COD. LPS', 'COD LPS', 'CODIGO LPS');
-  const iDesc   = col('DESCRIPCI');
-  const iCosto  = col('COSTO');
-  const iBase   = col('BASE');
-  const iSiva   = col('S/IVA', 'SIVA');
-  const iFinal  = col('FINAL');
-  const iMoneda = col('MONEDA');
-  // CÓD. INTERNO — buscar específicamente
-  const iInterno= col('INTERNO');
+  // COD. LPS — debe ser la columna con el código numérico de LPS
+  // Buscar específicamente "LPS" en el header, evitar "INTERNO"
+  let iLPS = -1;
+  for (let i = 0; i < headers.length; i++) {
+    const h = headers[i];
+    if ((h.includes('LPS') || h.includes('ESTANTE') || h.includes('NUM')) && !h.includes('INTERNO')) {
+      iLPS = i; break;
+    }
+  }
+  // Fallback: buscar columna con números de 5 dígitos en las primeras filas
+  if (iLPS < 0) {
+    for (let c = 0; c < Math.min(5, headers.length); c++) {
+      let hits = 0;
+      for (let r = hi+1; r < Math.min(hi+10, lines.length); r++) {
+        const row = splitCSVRow(lines[r]);
+        const v = (row[c]||'').replace(/^"|"$/g,'').trim();
+        if (/^\d{3,6}$/.test(v)) hits++;
+      }
+      if (hits >= 3) { iLPS = c; break; }
+    }
+  }
+
+  // COD. PROVEEDOR — el código del proveedor (puede tener letras)
+  let iCodProv = col('COD. PROV', 'CODIGO PROV', 'COD PROV', 'INTERNO', 'COD. INT');
+
+  const iProv    = col('PROVEEDOR');
+  const iDesc    = col('DESCRIPCI', 'DESC');
+  const iSiva    = col('S/IVA', 'SIVA', 'SIN IVA');
+  const iFinal   = col('FINAL', 'EFECTIVO', 'PRECIO FINAL');
+  const iBase    = col('BASE');
+  const iCosto   = col('COSTO');
+  const iCat     = col('CAT');
+  const iMoneda  = col('MONEDA');
+
+  // Log para debug
+  console.log('Headers:', headers);
+  console.log('iLPS:', iLPS, '| iCodProv:', iCodProv, '| iProv:', iProv, '| iDesc:', iDesc, '| iSiva:', iSiva, '| iFinal:', iFinal);
+
+  const dbg = document.getElementById('debug-bar');
+  if (dbg) {
+    dbg.style.display = 'block';
+    dbg.textContent = `Cols → LPS:${iLPS} | CodProv:${iCodProv} | Prov:${iProv} | Desc:${iDesc} | S/IVA:${iSiva} | Final:${iFinal}`;
+  }
 
   const productos = [];
+  const provsSet = new Set();
+
   for (let i = hi + 1; i < lines.length; i++) {
     const cols = splitCSVRow(lines[i]);
     const g = idx => idx >= 0 ? (cols[idx]||'').replace(/^"|"$/g,'').trim() : '';
 
-    const cod    = g(iCod);
-    const desc   = g(iDesc);
-    const prov   = g(iProv);
-    const cat    = g(iCat);
-    const codInt = g(iInterno);
-    const moneda = g(iMoneda) || 'ARS';
+    const codLPS   = g(iLPS);
+    const codProv  = g(iCodProv);
+    const desc     = g(iDesc);
+    const prov     = g(iProv).toUpperCase();
+    const cat      = g(iCat);
 
     let final = limpiarNum(g(iFinal));
     let siva  = limpiarNum(g(iSiva));
 
-    // Fallbacks de precio
     if (final <= 0 && siva > 0)  final = Math.round(siva * 1.21);
     if (siva  <= 0 && final > 0) siva  = Math.round(final / 1.21);
     if (final <= 0) {
       const base  = limpiarNum(g(iBase));
       const costo = limpiarNum(g(iCosto));
-      if (base  > 0) { siva = Math.round(base); final = Math.round(base * 1.21); }
-      else if (costo > 0) { siva = Math.round(costo * 1.5); final = Math.round(siva * 1.21); }
+      if (base  > 0) { siva = Math.round(base);        final = Math.round(base * 1.21); }
+      else if (costo > 0) { siva = Math.round(costo*1.5); final = Math.round(siva * 1.21); }
     }
 
-    if (!cod || !desc || final <= 0) continue;
-    productos.push({ cod, desc, codInt, prov, cat, moneda,
-      siva: Math.round(siva), final: Math.round(final) });
+    if (!desc || final <= 0) continue;
+
+    if (prov) provsSet.add(prov);
+    productos.push({ codLPS, codProv, desc, prov, cat, siva:Math.round(siva), final:Math.round(final) });
   }
+
+  // Actualizar lista de proveedores para los chips
+  proveedores = ['Todos', ...Array.from(provsSet).sort()];
   return productos;
 }
 
@@ -522,73 +325,63 @@ function limpiarNum(v) {
   return parseFloat(clean) || 0;
 }
 
-// ── CARGAR DATOS ──────────────────────────────────────────
+// ── CARGAR ────────────────────────────────────────────────
 async function cargar() {
   try {
-    // Intentar cargar del CSV publicado
     const r = await fetch(getCSVUrl());
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const text = await r.text();
     todos = parseCSV(text);
-    if (todos.length === 0) throw new Error('Sin datos');
-    actualizarDolar();
-    mostrarEstadoInicio();
+    if (todos.length === 0) throw new Error('Sin datos parseados');
     document.getElementById('stats-txt').textContent =
       todos.length.toLocaleString('es-AR') + ' productos disponibles';
+    renderFiltros();
+    mostrarEstadoInicio();
+    // Actualizar dólar desde el sheet CONFIG si está disponible
+    document.getElementById('dolar-val').textContent = '$1.420';
   } catch(e) {
-    // Si no se puede cargar, mostrar mensaje de configuración
+    console.error(e);
     document.getElementById('lista').innerHTML = `
       <div class="estado">
         <div class="estado-ico">⚙️</div>
-        <h3>Configuración pendiente</h3>
-        <p>Publicá la hoja LISTA DE PRECIOS como CSV en Google Sheets<br>y actualizá la URL en el código.</p>
+        <h3>Error al cargar</h3>
+        <p>${e.message}<br>Verificá que la hoja esté publicada como CSV.</p>
       </div>`;
-    document.getElementById('stats-txt').textContent = 'Sin datos';
+    document.getElementById('stats-txt').textContent = 'Error al cargar';
   }
-}
-
-function actualizarDolar() {
-  // El valor del dólar viene de la hoja CONFIG — se puede leer del Sheet
-  // Por ahora mostramos el valor de la celda CONFIG!B3
-  document.getElementById('dolar-val').textContent = '$1.420';
 }
 
 // ── RENDER ────────────────────────────────────────────────
 function renderFiltros() {
-  document.getElementById('filtros').innerHTML = PROVS.map(p =>
-    `<span class="chip${p === provAct ? ' on' : ''}" onclick="setProv('${p}')">${p}</span>`
+  document.getElementById('filtros').innerHTML = proveedores.map(p =>
+    `<span class="chip${p===provAct?' on':''}" onclick="setProv('${p}')">${p}</span>`
   ).join('');
 }
 
-function setProv(p) { provAct = p; pagina = 1; renderFiltros(); buscar(); }
-
-function setSort(s, el) {
-  sortAct = s; pagina = 1;
-  document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('on'));
+function setProv(p) { provAct=p; pagina=1; renderFiltros(); buscar(); }
+function setSort(s,el) {
+  sortAct=s; pagina=1;
+  document.querySelectorAll('.sort-btn').forEach(b=>b.classList.remove('on'));
   el.classList.add('on');
   buscar();
 }
-
 function onInput() {
   const q = document.getElementById('q').value;
-  document.getElementById('btn-clear').style.display = q ? 'block' : 'none';
-  pagina = 1;
-  buscar();
+  document.getElementById('btn-clear').style.display = q?'block':'none';
+  pagina=1; buscar();
 }
-
 function limpiar() {
-  document.getElementById('q').value = '';
-  document.getElementById('btn-clear').style.display = 'none';
-  provAct = 'Todos'; pagina = 1;
+  document.getElementById('q').value='';
+  document.getElementById('btn-clear').style.display='none';
+  provAct='Todos'; pagina=1;
   renderFiltros(); buscar();
 }
 
-function ars(n) { return '$' + Math.round(n).toLocaleString('es-AR'); }
-
+function ars(n) { return '$'+Math.round(n).toLocaleString('es-AR'); }
 function hl(txt, q) {
   if (!q) return txt;
-  const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-  return txt.replace(re, '<mark>$1</mark>');
+  const re = new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+  return txt.replace(re,'<mark>$1</mark>');
 }
 
 function mostrarEstadoInicio() {
@@ -596,37 +389,50 @@ function mostrarEstadoInicio() {
     <div class="estado">
       <div class="estado-ico">🔍</div>
       <h3>Escribí para buscar</h3>
-      <p>Podés buscar por nombre del producto,<br>número del estante (ej: 00123)<br>o código del proveedor (ej: DD-10622)</p>
+      <p>Podés buscar por nombre del producto,<br>código LPS (ej: 00123)<br>o código del proveedor (ej: DD-10622)</p>
     </div>`;
 }
 
 function buscar() {
-  const q = (document.getElementById('q').value || '').trim();
-  const qn = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const q = (document.getElementById('q').value||'').trim();
+  // Normalizar sin tildes para comparar
+  const qn = q.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
 
-  if (!q && provAct === 'Todos') { mostrarEstadoInicio(); return; }
+  if (!q && provAct==='Todos') { mostrarEstadoInicio(); return; }
 
   let res = [...todos];
   if (provAct !== 'Todos') res = res.filter(p => p.prov === provAct);
-  if (qn) res = res.filter(p =>
-    (p.desc + ' ' + p.codInt + ' ' + p.cod + ' ' + p.cat + ' ' + p.prov)
-      .toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(qn)
-  );
 
-  if (sortAct === 'az')          res.sort((a,b) => a.desc.localeCompare(b.desc));
-  else if (sortAct === 'precio_asc')  res.sort((a,b) => a.final - b.final);
-  else if (sortAct === 'precio_desc') res.sort((a,b) => b.final - a.final);
-  else if (sortAct === 'num')    res.sort((a,b) => a.codInt.localeCompare(b.codInt));
+  if (qn) {
+    // Buscar en TODOS los campos relevantes, dividiendo por palabras
+    const terms = qn.split(/\s+/).filter(Boolean);
+    res = res.filter(p => {
+      const haystack = [
+        p.desc,
+        p.codLPS,     // ← código LPS (número de estante)
+        p.codProv,    // ← código proveedor (ej: DD-10622)
+        p.prov,
+        p.cat
+      ].join(' ').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+      return terms.every(t => haystack.includes(t));
+    });
+  }
+
+  // Ordenar
+  if (sortAct==='az')          res.sort((a,b)=>a.desc.localeCompare(b.desc));
+  else if (sortAct==='precio_asc')  res.sort((a,b)=>a.final-b.final);
+  else if (sortAct==='precio_desc') res.sort((a,b)=>b.final-a.final);
+  else if (sortAct==='num')    res.sort((a,b)=>a.codLPS.localeCompare(b.codLPS));
 
   resultados = res;
   const total = res.length;
 
   document.getElementById('stats-txt').textContent =
-    total === 0 ? 'Sin resultados' :
-    total === 1 ? '1 producto encontrado' :
-    total.toLocaleString('es-AR') + ' productos encontrados';
+    total===0 ? 'Sin resultados' :
+    total===1 ? '1 producto encontrado' :
+    total.toLocaleString('es-AR')+' productos encontrados';
   document.getElementById('stats-extra').textContent =
-    total > POR_PAG ? `Mostrando ${Math.min(pagina * POR_PAG, total)} de ${total}` : '';
+    total>POR_PAG ? `Mostrando ${Math.min(pagina*POR_PAG,total)} de ${total}` : '';
 
   const lista = document.getElementById('lista');
 
@@ -640,65 +446,56 @@ function buscar() {
     return;
   }
 
-  const slice = res.slice(0, pagina * POR_PAG);
+  const slice = res.slice(0, pagina*POR_PAG);
   lista.innerHTML = slice.map(p => {
-    const cfg = COLORES[p.prov] || {bg:'#F5F5F5', emoji:'📦', cl:'#555'};
+    const cfg = COLORES[p.prov] || {bg:'#F5F5F5',emoji:'📦',cl:'#555'};
     const tarjeta = p.final * 1.20;
     return `
-    <div class="item">
-      <div class="item-ico" style="background:${cfg.bg}">${cfg.emoji}</div>
-      <div class="item-info">
-        <div class="item-nom">${hl(p.desc, q)}</div>
-        <div class="item-badges">
-          ${p.codInt ? `<span class="badge-num"># ${p.codInt}</span>` : ''}
-          <span class="badge-cod">${p.cod}</span>
-          <span class="badge">${p.prov}</span>
-          <span class="badge" style="opacity:.65">${p.cat}</span>
+      <div class="item">
+        <div class="item-ico" style="background:${cfg.bg}">${cfg.emoji}</div>
+        <div class="item-info">
+          <div class="item-nom">${hl(p.desc, q)}</div>
+          <div class="item-badges">
+            ${p.codLPS  ? `<span class="badge-lps">${hl(p.codLPS, q)}</span>` : ''}
+            ${p.codProv ? `<span class="badge-prov">${hl(p.codProv, q)}</span>` : ''}
+            <span class="badge">${p.prov}</span>
+            ${p.cat ? `<span class="badge" style="opacity:.65">${p.cat}</span>` : ''}
+          </div>
         </div>
-      </div>
-      <div class="item-precios">
-        <div class="p-col w-siva">
-          <div class="p-siva-val">${ars(p.siva)}</div>
-          <div class="p-siva-lbl">S/IVA</div>
+        <div class="item-precios">
+          <div class="p-col w-siva">
+            <div class="p-siva-val">${ars(p.siva)}</div>
+            <div class="p-siva-lbl">S/IVA</div>
+          </div>
+          <div class="p-div"></div>
+          <div class="p-col w-ef">
+            <div class="p-ef-val">${ars(p.final)}</div>
+            <div class="p-ef-lbl">💵 Efectivo</div>
+          </div>
+          <div class="p-div"></div>
+          <div class="p-col w-tc">
+            <div class="p-tc-val">${ars(tarjeta)}</div>
+            <div class="p-tc-lbl">💳 Tarjeta</div>
+          </div>
         </div>
-        <div class="p-div"></div>
-        <div class="p-col w-ef">
-          <div class="p-ef-val">${ars(p.final)}</div>
-          <div class="p-ef-lbl">💵 Efectivo</div>
-        </div>
-        <div class="p-div"></div>
-        <div class="p-col w-tc">
-          <div class="p-tc-val">${ars(tarjeta)}</div>
-          <div class="p-tc-lbl">💳 Tarjeta</div>
-        </div>
-      </div>
-    </div>`;
-  }).join('') + (total > pagina * POR_PAG ? `
+      </div>`;
+  }).join('') + (total > pagina*POR_PAG ? `
     <div class="ver-mas">
-      <button onclick="verMas()">Ver más resultados (${total - pagina * POR_PAG} restantes) ↓</button>
+      <button onclick="verMas()">Ver más resultados (${total-pagina*POR_PAG} restantes) ↓</button>
     </div>` : '');
 }
 
 function verMas() { pagina++; buscar(); }
 
-// ── RECARGAR ──────────────────────────────────────────────
 async function recargar() {
   const btn = document.getElementById('btn-refresh');
-  btn.style.transform = 'rotate(360deg)';
-  btn.style.transition = 'transform .6s';
-  document.getElementById('stats-txt').textContent = 'Actualizando precios...';
-  document.getElementById('lista').innerHTML = `
-    <div class="cargando">
-      <div class="spinner"></div>
-      <p>Actualizando lista de precios...</p>
-    </div>`;
+  btn.style.transform='rotate(360deg)';
+  btn.style.transition='transform .6s';
+  document.getElementById('stats-txt').textContent='Actualizando precios...';
+  document.getElementById('lista').innerHTML=`<div class="cargando"><div class="spinner"></div><p>Actualizando...</p></div>`;
   await cargar();
-  setTimeout(() => {
-    btn.style.transform = '';
-    btn.style.transition = '';
-  }, 700);
-  // Volver a buscar con el término actual
-  if (document.getElementById('q').value || provAct !== 'Todos') buscar();
+  setTimeout(()=>{btn.style.transform='';btn.style.transition='';},700);
+  if (document.getElementById('q').value||provAct!=='Todos') buscar();
 }
 
 // ── INIT ──────────────────────────────────────────────────
