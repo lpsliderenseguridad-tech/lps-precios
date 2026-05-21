@@ -96,7 +96,7 @@ body{font-family:var(--sans);background:var(--bg);color:var(--texto);min-height:
       <h1>Lista de Precios LPS</h1>
       <p>Buscá por descripción, código LPS o proveedor</p>
     </div>
-    <div class="dolar-pill">💵 <strong id="dolar-val">$1.420</strong></div>
+    <div class="dolar-pill" title="Dólar BNA oficial - se actualiza automáticamente">💵 <strong id="dolar-val">...</strong></div>
     <button onclick="recargar()" title="Actualizar" style="background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:50%;width:36px;height:36px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;color:white;flex-shrink:0;" id="btn-refresh">🔄</button>
   </div>
   <div class="search-wrap">
@@ -415,7 +415,22 @@ async function recargar(){
   if(document.getElementById('q').value||provAct!=='Todos') buscar();
 }
 
+// ── DÓLAR BNA AUTOMÁTICO ──────────────────────────────────────
+async function fetchDolar() {
+  const el = document.getElementById('dolar-val');
+  const fuentes = [
+    async () => { const r=await fetch('https://api.bluelytics.com.ar/v2/latest'); const d=await r.json(); return Math.round(d.oficial.value_sell); },
+    async () => { const r=await fetch('https://dolarapi.com/v1/dolares/oficial'); const d=await r.json(); return Math.round(d.venta); }
+  ];
+  for (const fn of fuentes) {
+    try { const val=await fn(); if(val>0){ el.textContent='$'+val.toLocaleString('es-AR'); return val; } } catch(e) {}
+  }
+  el.textContent='$1.412';
+  return 1412;
+}
+
 cargar();
+fetchDolar();
 </script>
 </body>
 </html>
